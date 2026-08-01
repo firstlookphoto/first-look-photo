@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Look Photo · Short-term rental photography</title>
+<meta name="description" content="Independent listing photography for Airbnb, Booking.com and short-term rental hosts in Picton and Blenheim. Send your listing for a free photo review.">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- =========================================
+     1. HEADER
+========================================= -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="#top" class="logo" aria-label="First Look Photo — home">
+      <svg class="logo__mark" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-width="2.4"/>
+        <circle cx="14" cy="14" r="5.4" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      </svg>
+      <span class="logo__stack">
+        <span class="logo__text">First Look <strong>Photo</strong></span>
+        <span class="logo__tagline">Short-term rental photography</span>
+      </span>
+      <!-- PLACEHOLDER: reemplazar por logo definitivo cuando esté listo -->
+    </a>
+    <a href="#contact" class="btn btn--primary btn--sm header-cta">Check availability</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- =========================================
+     2. HERO
+========================================= -->
+<section class="hero" id="top">
+  <picture class="hero__bg">
+    <!-- Phones get a taller crop of the same photo, so the view still reads
+         instead of being squeezed out by the narrow viewport. -->
+    <source
+      media="(max-width: 899px)"
+      type="image/webp"
+      srcset="images/hero-mobile-507.webp 507w, images/hero-mobile-640.webp 640w"
+      sizes="100vw">
+    <source
+      media="(max-width: 899px)"
+      type="image/jpeg"
+      srcset="images/hero-mobile-507.jpg 507w, images/hero-mobile-640.jpg 640w"
+      sizes="100vw">
+    <source
+      type="image/webp"
+      srcset="images/hero-desktop-800.webp 800w, images/hero-desktop-1152.webp 1152w"
+      sizes="100vw">
+    <img
+      src="images/hero-desktop-1152.jpg"
+      srcset="images/hero-desktop-800.jpg 800w, images/hero-desktop-1152.jpg 1152w"
+      sizes="100vw"
+      alt="Bedroom with layered pillows, looking out to a lake and snow-capped mountains"
+      width="1152" height="576"
+      loading="eager" fetchpriority="high" decoding="async"
+      class="hero__bg-image">
+  </picture>
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <h1>Could better photos help your listing get more bookings?</h1>
+      <p class="hero__subtitle">Professional short-term rental photography and listing-ready editing for Airbnb, Booking.com and holiday rental hosts.</p>
+      <div class="hero__ctas">
+        <div class="hero__cta-row">
+          <a href="#contact" class="btn btn--primary btn--lg">Get a free photo review</a>
+          <a href="#contact" class="btn btn--ghost btn--lg" data-intent-preselect>Book a photo session</a>
+        </div>
+      </div>
+      <p class="hero__microcopy">Honest, no-obligation feedback within 48 hours.</p>
+      <p class="hero__microcopy">Send your listing link for honest feedback, or request a photo session if you're ready to refresh your listing.</p>
+      <p class="hero__microcopy">Currently available for selected Marlborough hosts.</p>
+      <p class="badge-specialisation">Specialised exclusively in short-term rental photography, not general real estate or portraits.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     3. ANTES Y DESPUÉS
+========================================= -->
+<section class="section before-after" id="before-after">
+  <div class="container">
+    <h2 class="section__title">Before and after</h2>
+
+    <div class="ba-carousel" data-ba-carousel>
+      <div class="ba-carousel__viewport">
+        <div class="ba-track">
+
+          <div class="ba-slide">
+            <figure class="ba-compare" data-ba-compare data-ba-start="50">
+              <div class="ba-frame">
+                <div class="ba-image ba-image--before">
+                  <span class="ba-tag">Before</span>
+                  <picture><source srcset="images/before-1.webp" type="image/webp"><img src="images/before-1.jpg" alt="Living room before editing: flat light and muted colour" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <div class="ba-image ba-image--after">
+                  <span class="ba-tag">After</span>
+                  <picture><source srcset="images/after-1.webp" type="image/webp"><img src="images/after-1.jpg" alt="Living room after editing: brighter, warmer light and truer colour" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+                  <span class="ba-handle__icon">⟷</span>
+                </button>
+              </div>
+              <figcaption class="ba-caption">Light and colour</figcaption>
+            </figure>
+          </div>
+
+          <div class="ba-slide">
+            <figure class="ba-compare" data-ba-compare data-ba-start="50">
+              <div class="ba-frame">
+                <div class="ba-image ba-image--before">
+                  <span class="ba-tag">Before</span>
+                  <picture><source srcset="images/before-2.webp" type="image/webp"><img src="images/before-2.jpg" alt="Kitchen and living area before: an angled, cropped phone photo" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <div class="ba-image ba-image--after">
+                  <span class="ba-tag">After</span>
+                  <picture><source srcset="images/after-2.webp" type="image/webp"><img src="images/after-2.jpg" alt="Kitchen and living area after: a level, well-composed wide shot" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+                  <span class="ba-handle__icon">⟷</span>
+                </button>
+              </div>
+              <figcaption class="ba-caption">Composition</figcaption>
+            </figure>
+          </div>
+
+          <div class="ba-slide">
+            <figure class="ba-compare" data-ba-compare data-ba-start="50">
+              <div class="ba-frame">
+                <div class="ba-image ba-image--before">
+                  <span class="ba-tag">Before</span>
+                  <picture><source srcset="images/before-3.webp" type="image/webp"><img src="images/before-3.jpg" alt="Living and dining area before: hazy tones and uneven light" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <div class="ba-image ba-image--after">
+                  <span class="ba-tag">After</span>
+                  <picture><source srcset="images/after-3.webp" type="image/webp"><img src="images/after-3.jpg" alt="Living and dining area after: clean, bright, true-to-life presentation" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+                  <span class="ba-handle__icon">⟷</span>
+                </button>
+              </div>
+              <figcaption class="ba-caption">Visual cleanup</figcaption>
+            </figure>
+          </div>
+
+          <div class="ba-slide">
+            <figure class="ba-compare" data-ba-compare data-ba-start="50">
+              <div class="ba-frame">
+                <div class="ba-image ba-image--before">
+                  <span class="ba-tag">Before</span>
+                  <picture><source srcset="images/before-4.webp" type="image/webp"><img src="images/before-4.jpg" alt="Kitchen and hallway before: cluttered surfaces and personal items on display" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <div class="ba-image ba-image--after">
+                  <span class="ba-tag">After</span>
+                  <picture><source srcset="images/after-4.webp" type="image/webp"><img src="images/after-4.jpg" alt="Kitchen and hallway after: styled table setting and tidied surfaces" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+                  <span class="ba-handle__icon">⟷</span>
+                </button>
+              </div>
+              <figcaption class="ba-caption">Styling details</figcaption>
+            </figure>
+          </div>
+
+          <div class="ba-slide">
+            <figure class="ba-compare" data-ba-compare data-ba-start="50">
+              <div class="ba-frame">
+                <div class="ba-image ba-image--before">
+                  <span class="ba-tag">Before</span>
+                  <picture><source srcset="images/before-5.webp" type="image/webp"><img src="images/before-5.jpg" alt="Hallway before editing: warm, uneven colour cast" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <div class="ba-image ba-image--after">
+                  <span class="ba-tag">After</span>
+                  <picture><source srcset="images/after-5.webp" type="image/webp"><img src="images/after-5.jpg" alt="Hallway after editing: balanced light and natural colour" width="1200" height="900" loading="lazy" decoding="async"></picture>
+                </div>
+                <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+                  <span class="ba-handle__icon">⟷</span>
+                </button>
+              </div>
+              <figcaption class="ba-caption">Light and colour</figcaption>
+            </figure>
+          </div>
+
+        </div>
+      </div>
+
+      <button type="button" class="ba-carousel__arrow ba-carousel__arrow--prev" aria-label="Previous comparison">‹</button>
+      <button type="button" class="ba-carousel__arrow ba-carousel__arrow--next" aria-label="Next comparison">›</button>
+
+      <div class="ba-carousel__dots" role="tablist" aria-label="Before and after examples">
+        <button type="button" class="ba-carousel__dot" role="tab" aria-selected="true" aria-label="Show comparison 1"></button>
+        <button type="button" class="ba-carousel__dot" role="tab" aria-selected="false" aria-label="Show comparison 2"></button>
+        <button type="button" class="ba-carousel__dot" role="tab" aria-selected="false" aria-label="Show comparison 3"></button>
+        <button type="button" class="ba-carousel__dot" role="tab" aria-selected="false" aria-label="Show comparison 4"></button>
+        <button type="button" class="ba-carousel__dot" role="tab" aria-selected="false" aria-label="Show comparison 5"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     4. EL PROBLEMA
+========================================= -->
+<section class="section problem">
+  <div class="container container--narrow">
+    <p class="problem__intro">You probably already have a great place to stay. Stronger photos make your listing easier to trust, compare and book.</p>
+    <p class="problem__intro">Better photos can make your property feel more desirable and higher value, helping support more bookings and stronger nightly rates.</p>
+    <h2 class="section__title">Your photos are the first viewing</h2>
+    <p class="section__body">Before guests read every detail, they compare photos. If your photos look dark, rushed, cluttered or outdated, your property can appear less comfortable and less valuable than it really is.</p>
+    <p class="section__body">The property is usually not the problem. The presentation is.</p>
+    <p class="section__body">Even if your listing already gets bookings, better photos help it stand out when guests are comparing similar properties side by side.</p>
+  </div>
+</section>
+
+<!-- =========================================
+     5. THIS SERVICE IS FOR YOU IF
+========================================= -->
+<section class="section fit-check">
+  <div class="container container--narrow">
+    <h2 class="section__title">This service is for you if:</h2>
+    <ul class="check-list">
+      <li>Similar properties look more appealing online.</li>
+      <li>Your current photos were taken quickly, in poor light or on a phone.</li>
+      <li>Your photos are over a year old, or the property has changed since they were taken.</li>
+      <li>Your gallery feels outdated, inconsistent or incomplete.</li>
+      <li>Your property looks better in person than in the listing.</li>
+      <li>You want better photos without managing the shooting, editing and image selection yourself.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =========================================
+     6. PROPUESTA VISUAL
+========================================= -->
+<section class="section value-prop">
+  <div class="container container--narrow">
+    <h2 class="section__title">More than photos of rooms</h2>
+    <p class="section__body">A strong listing gallery should show light, cleanliness, comfort, space, views and the small details guests care about.</p>
+    <p class="section__body">The goal is not to make the property look different. It is to show its real value more clearly, so guests can picture themselves staying there, and want to book it.</p>
+    <p class="section__body value-prop__differentiator">Real estate photography sells the property. Short-term rental photography sells the experience of staying there.</p>
+    <div class="value-prop__list-wrap">
+      <ul class="value-prop__list">
+        <li>Where guests will sleep.</li>
+        <li>How clean and comfortable the space feels.</li>
+        <li>What details, views and amenities make the stay easier to choose.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     7. DATOS OFICIALES DE AIRBNB
+========================================= -->
+<section class="section airbnb-data">
+  <div class="container">
+    <h2 class="section__title">Airbnb's own data suggests better photos can make a measurable difference</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-card__number">21%</span>
+        <span class="stat-card__label">higher host earnings</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__number">19%</span>
+        <span class="stat-card__label">more bookings</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__number">85%</span>
+        <span class="stat-card__label">covered the photography cost with one booked night</span>
+      </div>
+    </div>
+    <p class="section__body">Airbnb reports that listings using its Professional Photography service saw, on average, 21% higher host earnings and 19% more bookings over the following 365 days. It also reports that 85% of hosts covered the cost of the service with one booked night.</p>
+    <p class="disclaimer">These are Airbnb-reported averages, not guaranteed results for individual properties. Outcomes depend on price, location, reviews and market demand.</p>
+  </div>
+</section>
+
+<!-- =========================================
+     7B. RESEÑAS
+========================================= -->
+<section class="section reviews">
+  <div class="container">
+    <h2 class="section__title">What hosts say</h2>
+    <p class="reviews__note">Feedback from hosts who wanted their listings to look clearer, more trustworthy and easier to book.</p>
+    <div class="reviews-grid">
+      <blockquote class="review-card">
+        <p>“We were already getting bookings, so I wasn't sure if new photos were really necessary. The review helped us see that our cover photo wasn't showing the property clearly enough. The new photos made the place look much closer to how it feels in person. The first few images finally showed the living area and view properly.”</p>
+        <footer>Sophie M., holiday home, Queenstown</footer>
+      </blockquote>
+      <blockquote class="review-card">
+        <p>“I was worried the photos might look too edited, but they still felt true to the apartment, and showed the potential guests actually see when they walk in. The advice on the cover photo and gallery order was just as useful as the photos.”</p>
+        <footer>J.T., apartment, Auckland</footer>
+      </blockquote>
+      <blockquote class="review-card">
+        <p>“The process was easy from start to finish. We received simple preparation tips before the shoot, the session was straightforward, and the final images were ready to use on our listing. The advice on which photos to show first made it much easier for guests to understand the layout.”</p>
+        <footer>Sharon A., holiday home, Rotorua</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     8. PAQUETES Y PRECIOS
+========================================= -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <h2 class="section__title">What's included, packages and pricing</h2>
+    <p class="pricing__investment-note">A one-time investment in your listing. Airbnb's own data above suggests one extra booked night can cover it.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3 class="price-card__name">Essential</h3>
+        <p class="price-card__photos">8 photos + free guide</p>
+        <p class="price-card__price">$129</p>
+        <p class="price-card__best-for">Best for a studio, private room, guest suite or very small stay.</p>
+        <a href="#contact" class="btn btn--outline btn--sm" data-package="Essential, 8 photos ($129)">Book this package</a>
+      </div>
+
+      <div class="price-card">
+        <h3 class="price-card__name">Standard</h3>
+        <p class="price-card__photos">12 photos + free guide</p>
+        <p class="price-card__price">$169</p>
+        <p class="price-card__best-for">Best for a one-bedroom property, compact holiday home or simple short-term rental.</p>
+        <a href="#contact" class="btn btn--outline btn--sm" data-package="Standard, 12 photos ($169)">Book this package</a>
+      </div>
+
+      <div class="price-card price-card--featured">
+        <span class="price-card__ribbon">Best value</span>
+        <h3 class="price-card__name">Complete</h3>
+        <p class="price-card__photos">16 photos + free guide</p>
+        <p class="price-card__price">$199</p>
+        <p class="price-card__best-for">Best for larger homes, multiple bedrooms, outdoor areas, views or properties with more to show.</p>
+        <a href="#contact" class="btn btn--primary btn--sm" data-package="Complete, 16 photos ($199)">Book this package</a>
+      </div>
+    </div>
+
+    <p class="pricing__package-guide">Most small listings fit the Standard package. Complete is best when the property has multiple rooms, outdoor areas, views or amenities worth showing.</p>
+    <p class="pricing__package-note">The goal is not to deliver the highest number of images, but the strongest set for your listing. If your property does not need the larger package, I'll recommend a smaller one.</p>
+    <p class="pricing__zero-risk-note">Ready to refresh your listing? Request a session. Not sure which package fits? Send your listing first and I'll guide you.</p>
+
+    <div class="bonus-block">
+      <h3 class="bonus-block__title">Included with every package</h3>
+      <p class="bonus-block__body">Included: a short free guide with preparation tips, cover photo advice and opening gallery guidance.</p>
+    </div>
+
+    <div class="deliverables">
+      <div class="deliverables__group">
+        <h4 class="deliverables__group-title">Photography</h4>
+        <ul class="deliverables__list">
+          <li>Photo session at the property</li>
+          <li>Interior and exterior images</li>
+          <li>Detail and amenity shots</li>
+        </ul>
+      </div>
+      <div class="deliverables__group">
+        <h4 class="deliverables__group-title">Listing-ready editing</h4>
+        <ul class="deliverables__list">
+          <li>Brightness, colour and clarity correction</li>
+          <li>Natural-looking visual enhancements</li>
+          <li>Photos prepared for your listing</li>
+        </ul>
+      </div>
+      <div class="deliverables__group">
+        <h4 class="deliverables__group-title">Listing guidance</h4>
+        <ul class="deliverables__list">
+          <li>Recommendation for the main cover image</li>
+          <li>Suggested order for the opening gallery</li>
+          <li>Preparation checklist before the shoot</li>
+          <li>One editing revision for brightness, colour and image selection</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="disclaimer pricing__editing-disclaimer">Editing may include light, colour, composition, cleanup and minor styling enhancements. It does not change the property's core features, room size, available amenities or layout.</p>
+
+    <div class="pricing-note">
+      <h3 class="pricing-note__title">Your listing should feel easy to understand</h3>
+      <p>Guests should quickly see the main spaces, where they will sleep, what makes the property comfortable, and why it is worth choosing over similar listings.</p>
+      <p>That is why each session includes not only photos, but also guidance on cover image and opening gallery order.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     9. CÓMO FUNCIONA
+========================================= -->
+<section class="section process">
+  <div class="container">
+    <h2 class="section__title">How it works</h2>
+    <ol class="process-list">
+      <li class="process-step">
+        <span class="process-step__number">1</span>
+        <h3 class="process-step__title">Send your listing</h3>
+        <p class="process-step__body">I review your current photos and point out the clearest opportunities.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-step__number">2</span>
+        <h3 class="process-step__title">Prepare the property</h3>
+        <p class="process-step__body">You receive a simple checklist to have the accommodation photo-ready.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-step__number">3</span>
+        <h3 class="process-step__title">Photo session</h3>
+        <p class="process-step__body">I photograph the main spaces, details, amenities, exterior and views.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-step__number">4</span>
+        <h3 class="process-step__title">Editing and selection</h3>
+        <p class="process-step__body">I improve light, colour, composition and visual presentation, then prepare the strongest images for your listing.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-step__number">5</span>
+        <h3 class="process-step__title">Delivery and recommendations</h3>
+        <p class="process-step__body">You receive the selected images plus guidance on the cover photo and opening gallery order.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- =========================================
+     10. PORTFOLIO / GALERÍA
+========================================= -->
+<section class="section portfolio" id="portfolio">
+  <div class="container">
+    <h2 class="section__title">Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-01.webp" type="image/webp"><img src="images/portfolio-01.jpg" alt="Modern lakeside cabin exterior at dusk, with warm interior lighting and a stone-based deck" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-02.webp" type="image/webp"><img src="images/portfolio-02.jpg" alt="Bedroom with a bay window overlooking the lake and mountains, styled with a knit throw and folded towels" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-03.webp" type="image/webp"><img src="images/portfolio-03.jpg" alt="Bright living room featuring framed botanical artwork above a light grey sectional" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-04.webp" type="image/webp"><img src="images/portfolio-04.jpg" alt="Kitchen counter with dark cabinetry, stone splashback and under-cabinet lighting" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-05.webp" type="image/webp"><img src="images/portfolio-05.jpg" alt="Living room with a wood burner, leather ottoman and layered textures around the fireplace" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-06.webp" type="image/webp"><img src="images/portfolio-06.jpg" alt="Dining table set for two with lake and mountain views through floor-to-ceiling windows" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-07.webp" type="image/webp"><img src="images/portfolio-07.jpg" alt="Bedroom with sage green bedding, tall windows and an ensuite bathroom" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-08.webp" type="image/webp"><img src="images/portfolio-08.jpg" alt="Bathroom with a freestanding black tub, brass fixtures and a walk-in shower" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-09.webp" type="image/webp"><img src="images/portfolio-09.jpg" alt="Corner reading nook with a leather armchair and dried pampas grass beside a sliding glass door" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-10.webp" type="image/webp"><img src="images/portfolio-10.jpg" alt="Kitchen island framed by pendant lighting, with sea and hillside views beyond" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-11.webp" type="image/webp"><img src="images/portfolio-11.jpg" alt="Headboard detail with a botanical print and woven bedside lamp" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-12.webp" type="image/webp"><img src="images/portfolio-12.jpg" alt="Open-plan living room with floor-to-ceiling glass doors framing the sea and native bush" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-13.webp" type="image/webp"><img src="images/portfolio-13.jpg" alt="Bedroom with a picture window framing the lake and mountains, dressed with folded towels" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-14.webp" type="image/webp"><img src="images/portfolio-14.jpg" alt="Outdoor dining setting on a deck overlooking mountains and a lake at sunset" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-15.webp" type="image/webp"><img src="images/portfolio-15.jpg" alt="Bedside table with a brass lamp beneath a framed line-art print" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-16.webp" type="image/webp"><img src="images/portfolio-16.jpg" alt="Corner bedroom with tall windows, wood flooring and a fringed throw" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-17.webp" type="image/webp"><img src="images/portfolio-17.jpg" alt="Bathroom vanity detail with stone basin, folded towels and eco-friendly amenities" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-18.webp" type="image/webp"><img src="images/portfolio-18.jpg" alt="Modern home exterior at dusk, framed by native landscaping and a boulder garden" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-19.webp" type="image/webp"><img src="images/portfolio-19.jpg" alt="Living room armchair with a green throw, looking out to mountain and lake views" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+      <div class="portfolio-item"><picture><source srcset="images/portfolio-20.webp" type="image/webp"><img src="images/portfolio-20.jpg" alt="Outdoor hot tub on a deck with sweeping lake and mountain views" width="800" height="600" loading="lazy" decoding="async"></picture></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     11. ABOUT ME
+========================================= -->
+<section class="section about">
+  <div class="container about__inner">
+    <div class="about__media">
+      <picture><source srcset="images/about-photographer.webp" type="image/webp"><img src="images/about-photographer.jpg" alt="Brian, the photographer behind First Look Photo, holding a camera and smiling" width="800" height="800" loading="lazy" decoding="async" class="about__photo"></picture>
+    </div>
+    <div class="about__copy">
+      <h2 class="section__title">About me</h2>
+      <p class="section__body">I'm Brian, the photographer behind First Look Photo. I've been an Airbnb Superhost for more than 10 years, so I understand what guests look for before they book, not just how to photograph a room.</p>
+      <p class="section__body">First Look Photo focuses on short-term rental and holiday home photography: stronger cover images, clearer galleries, better light, cleaner presentation and listing-ready delivery.</p>
+      <p class="section__body">I work with short-term rental hosts in different locations, with current availability in Marlborough during August and September.</p>
+      <ul class="authority-list">
+        <li>Airbnb Superhost with over 10 years of hosting experience.</li>
+        <li>Every listing is reviewed personally before any shoot is booked.</li>
+        <li>Focused on short-term rental listings, not general real estate or portraits.</li>
+        <li>Currently accepting a limited number of Marlborough bookings.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     13. OFERTA LOCAL LIMITADA
+========================================= -->
+<section class="section offer">
+  <div class="container container--narrow">
+    <h2 class="section__title">Current availability</h2>
+    <p class="section__body">First Look Photo is currently accepting a limited number of short-term rental photography projects in Marlborough during August and September.</p>
+    <p class="section__body">If your listing photos feel outdated, inconsistent or weaker than similar properties, this is a good time to refresh them before the next high season.</p>
+
+    <div class="low-risk-block">
+      <h3 class="low-risk-block__title">Not sure what needs improving?</h3>
+      <p class="low-risk-block__body">Send me your Airbnb, Booking.com or holiday rental listing. I'll review the current photos and explain the clearest opportunities before you decide whether to book a session.</p>
+      <p class="low-risk-block__zero-risk">If, after reviewing your listing, I don't think new photos would make a real difference, I'll tell you honestly. No pressure to book.</p>
+      <a href="#contact" class="btn btn--primary btn--lg" data-intent-preselect>Check availability</a>
+      <p class="low-risk-block__note">The free review covers general observations about your cover photo, lighting, gallery order and consistency. It is not a full audit.</p>
+      <p class="low-risk-block__example-intro">Your free review may include notes like:</p>
+      <ul class="low-risk-block__example-list">
+        <li>Your cover photo could be brighter.</li>
+        <li>The first few images don't show the property's strongest features.</li>
+        <li>The gallery order could make the space easier to understand.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     14. FAQ
+========================================= -->
+<section class="section faq" id="faq">
+  <div class="container container--narrow">
+    <h2 class="section__title">Frequently asked questions</h2>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do you only photograph Airbnb properties?</summary>
+        <p>No. Suitable for Booking.com, holiday homes, guest houses, B&amp;Bs, direct booking websites.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use the photos on different platforms?</summary>
+        <p>Yes. You can use the delivered photos for your short-term rental listing on Airbnb, Booking.com, Vrbo, direct booking websites and related social media, without restriction.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will the photos misrepresent the property?</summary>
+        <p>No. Editing is used to improve the presentation of the listing while keeping the property's essential features accurate. I do not change the size of rooms, add amenities that are not available, or make the property look like a different place.</p>
+        <p>Some visual styling or minor scene enhancements may be used to make the photos feel more inviting, but the final images should still give guests a fair expectation of the stay.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use my phone instead of hiring a photographer?</summary>
+        <p>Yes, some phone photos can work well. The question is whether they look as clear, bright and trustworthy as similar listings guests are comparing against. The free review can help you decide if professional photos are worth it for your property.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are more bookings guaranteed?</summary>
+        <p>No. Photography is one factor among several. Price, location, reviews, availability and demand also matter. What you will receive is professionally edited, listing-ready photos and clear guidance on which images to use first.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How should I prepare the property?</summary>
+        <p>Short checklist provided before the session.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if the weather is bad?</summary>
+        <p>If outdoor photos are important and the weather is unsuitable, we can reschedule where possible. Interior photos can usually still be completed as planned.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can you help choose the main photo?</summary>
+        <p>Yes, includes a recommendation for the cover photo and gallery order.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if I want an edit changed?</summary>
+        <p>One editing revision is included.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How are the images delivered?</summary>
+        <p>Images are delivered digitally in listing-ready JPEG format, usually within 3 to 5 business days after the photo session.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is the session booked and paid for?</summary>
+        <p>A 50% deposit confirms your booking, with the remaining 50% due on delivery of your photos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this service right for every property?</summary>
+        <p>Not always. If your current photos are already strong, recent and well arranged, new photos may not be necessary. I will tell you this honestly during the free review.</p>
+      </details>
+    </div>
+
+    <div class="cta-repeat">
+      <a href="#contact" class="btn btn--primary btn--lg">Start here</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     15. CTA FINAL + FORMULARIO
+========================================= -->
+<section class="section contact" id="contact">
+  <div class="container container--narrow">
+    <h2 class="section__title">Request a photo review or photo session</h2>
+    <p class="section__lead">Send your listing link and choose whether you want a free review first or are ready to book.</p>
+
+    <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/mojgopoa" novalidate>
+      <div class="form-field">
+        <label for="field-name">Name <span class="required-mark" aria-hidden="true">*</span></label>
+        <input type="text" id="field-name" name="name" autocomplete="name" required>
+        <span class="form-error" data-error-for="field-name"></span>
+      </div>
+
+      <div class="form-field">
+        <label for="field-email">Email <span class="required-mark" aria-hidden="true">*</span></label>
+        <input type="email" id="field-email" name="email" autocomplete="email" required>
+        <span class="form-error" data-error-for="field-email"></span>
+      </div>
+
+      <div class="form-field">
+        <label for="field-phone">Phone / WhatsApp <span class="optional-tag">(optional)</span></label>
+        <input type="tel" id="field-phone" name="phone" autocomplete="tel">
+        <span class="form-error" data-error-for="field-phone"></span>
+      </div>
+
+      <div class="form-field">
+        <label for="field-listing">Listing URL or ID <span class="required-mark" aria-hidden="true">*</span></label>
+        <input type="text" id="field-listing" name="listing" placeholder="https://airbnb.com/rooms/..." autocomplete="url" required>
+        <span class="form-error" data-error-for="field-listing"></span>
+      </div>
+
+      <div class="form-field">
+        <label for="field-message">What would you like to improve? <span class="optional-tag">(optional)</span></label>
+        <textarea id="field-message" name="message" rows="4"></textarea>
+      </div>
+
+      <fieldset class="form-fieldset">
+        <legend>Are you ready to book? <span class="required-mark" aria-hidden="true">*</span></legend>
+        <div class="form-options">
+          <label class="form-option">
+            <input type="radio" name="intent" value="Ready to book" checked required>
+            <span>Yes, I'd like to book a photo session</span>
+          </label>
+          <label class="form-option">
+            <input type="radio" name="intent" value="Review first" required>
+            <span>No, I'd like a free photo review first</span>
+          </label>
+        </div>
+        <span class="form-error" data-error-for="intent"></span>
+      </fieldset>
+
+      <div class="form-intent-panel" data-intent-panel="Ready to book" hidden>
+        <div class="form-field">
+          <label for="field-package">Package <span class="required-mark" aria-hidden="true">*</span></label>
+          <select id="field-package" name="package">
+            <option value="">Select a package</option>
+            <option value="Essential, 8 photos ($129)">Essential, 8 photos ($129)</option>
+            <option value="Standard, 12 photos ($169)">Standard, 12 photos ($169)</option>
+            <option value="Complete, 16 photos ($199)">Complete, 16 photos ($199)</option>
+          </select>
+          <span class="form-error" data-error-for="field-package"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="field-date">Preferred date <span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="date" id="field-date" name="date">
+          <span class="form-error" data-error-for="field-date"></span>
+        </div>
+      </div>
+
+      <div class="form-field form-field--checkbox">
+        <label class="form-checkbox">
+          <input type="checkbox" id="field-privacy" name="privacy" required>
+          <span>I agree that First Look Photo can contact me about my listing review or booking request. <span class="required-mark" aria-hidden="true">*</span></span>
+        </label>
+        <span class="form-error" data-error-for="field-privacy"></span>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--lg contact-form__submit" data-submit-label>Request a photo session</button>
+
+      <p class="contact-form__confirmation" data-form-confirmation hidden role="status"></p>
+    </form>
+
+    <div class="alt-contact">
+      <p>Prefer to message directly?</p>
+      <a href="https://wa.me/64273135116" class="btn btn--outline btn--sm alt-contact__cta" target="_blank" rel="noopener">Message me on WhatsApp</a>
+      <p>Or call <a href="tel:+64273135116">+64 27 313 5116</a> · Email <a href="mailto:hello@firstlook-photo.com">hello@firstlook-photo.com</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__contact">First Look Photo · short-term rental photography</p>
+    <p class="site-footer__disclaimer">Not affiliated with Airbnb, Booking.com or Vrbo.</p>
+    <p class="site-footer__copy">&copy; 2026 First Look Photo</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

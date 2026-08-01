@@ -1,0 +1,410 @@
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------
+     Before/After compare slider
+     Only interactive at the "desktop" breakpoint
+     (matches the CSS breakpoint at 700px). Below
+     that, the CSS shows a stacked before/after
+     layout and this code simply does nothing.
+  --------------------------------------------- */
+  var DESKTOP_QUERY = "(min-width: 700px)";
+
+  function initCompare(el) {
+    var mq = window.matchMedia(DESKTOP_QUERY);
+    var handle = el.querySelector(".ba-handle");
+    if (!handle) return;
+
+    var dragging = false;
+
+    function setPosition(percent) {
+      var clamped = Math.min(100, Math.max(0, percent));
+      el.style.setProperty("--ba-pos", clamped + "%");
+      handle.setAttribute("aria-valuenow", Math.round(clamped));
+    }
+
+    function percentFromClientX(clientX) {
+      var rect = el.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    function onPointerMove(e) {
+      if (!dragging || !mq.matches) return;
+      setPosition(percentFromClientX(e.clientX));
+    }
+
+    function onPointerUp() {
+      dragging = false;
+    }
+
+    function onPointerDown(e) {
+      if (!mq.matches) return;
+      dragging = true;
+      setPosition(percentFromClientX(e.clientX));
+      e.preventDefault();
+    }
+
+    handle.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
+
+    handle.addEventListener("keydown", function (e) {
+      if (!mq.matches) return;
+      var current = parseFloat(handle.getAttribute("aria-valuenow")) || 50;
+      if (e.key === "ArrowLeft") {
+        setPosition(current - 5);
+        e.preventDefault();
+      } else if (e.key === "ArrowRight") {
+        setPosition(current + 5);
+        e.preventDefault();
+      }
+    });
+
+    var start = parseFloat(el.getAttribute("data-ba-start")) || 50;
+    setPosition(start);
+  }
+
+  document.querySelectorAll("[data-ba-compare]").forEach(initCompare);
+
+  /* ---------------------------------------------
+     Before/After carousel
+     One comparison visible at a time, with arrow
+     buttons, dot navigation, swipe and keyboard
+     support. Guards against the inner compare
+     handle's own drag so dragging it doesn't also
+     advance the carousel.
+  --------------------------------------------- */
+  function initBaCarousel(root) {
+    var track = root.querySelector(".ba-track");
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".ba-slide"));
+    var prevBtn = root.querySelector(".ba-carousel__arrow--prev");
+    var nextBtn = root.querySelector(".ba-carousel__arrow--next");
+    var dots = Array.prototype.slice.call(root.querySelectorAll(".ba-carousel__dot"));
+    var index = 0;
+    var startX = null;
+
+    function update() {
+      track.style.transform = "translateX(-" + index * 100 + "%)";
+      dots.forEach(function (dot, i) {
+        dot.setAttribute("aria-selected", i === index ? "true" : "false");
+      });
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === slides.length - 1;
+    }
+
+    function goTo(i) {
+      index = Math.min(slides.length - 1, Math.max(0, i));
+      update();
+    }
+
+    prevBtn.addEventListener("click", function () {
+      goTo(index - 1);
+    });
+    nextBtn.addEventListener("click", function () {
+      goTo(index + 1);
+    });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () {
+        goTo(i);
+      });
+    });
+
+    track.addEventListener("pointerdown", function (e) {
+      startX = e.target.closest(".ba-handle") ? null : e.clientX;
+    });
+    track.addEventListener("pointerup", function (e) {
+      if (startX === null) return;
+      var delta = e.clientX - startX;
+      startX = null;
+      if (Math.abs(delta) > 40) {
+        goTo(delta < 0 ? index + 1 : index - 1);
+      }
+    });
+
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") goTo(index - 1);
+      if (e.key === "ArrowRight") goTo(index + 1);
+    });
+
+    update();
+  }
+
+  document.querySelectorAll("[data-ba-carousel]").forEach(initBaCarousel);
+
+  /* ---------------------------------------------
+     FAQ accordion
+     Only one question stays open at a time, so the
+     FAQ list stays compact on mobile. Native
+     <details> handles the collapse/expand itself;
+     this just closes any sibling that was open.
+  --------------------------------------------- */
+  var faqItems = Array.prototype.slice.call(document.querySelectorAll(".faq-item"));
+  faqItems.forEach(function (item) {
+    item.addEventListener("toggle", function () {
+      if (!item.open) return;
+      faqItems.forEach(function (other) {
+        if (other !== item) other.open = false;
+      });
+    });
+  });
+
+  /* ---------------------------------------------
+     Contact form
+     One form, two paths. Everyone leaves contact
+     details and a listing link, then picks between
+     a free review and booking a session. The
+     booking path adds a package and a date, and
+     changes the button and the success message to
+     match. Submits to Formspree; WhatsApp is only
+     offered as a separate, manual contact option.
+  --------------------------------------------- */
+  var form = document.getElementById("contact-form");
+  if (form) {
+    var LABELS = {
+      "Ready to book": {
+        button: "Request a photo session",
+        success: "Thanks — I'll check availability for your preferred date and get back to you shortly to confirm the photo session, package and next steps."
+      },
+      "Review first": {
+        button: "Send my listing for review",
+        success: "I'll review your listing and get back to you within 48 hours."
+      }
+    };
+
+    var confirmation = form.querySelector("[data-form-confirmation]");
+    var submitBtn = form.querySelector("[data-submit-label]");
+    var intentPanels = Array.prototype.slice.call(
+      form.querySelectorAll("[data-intent-panel]")
+    );
+    var packageSelect = document.getElementById("field-package");
+    var dateInput = document.getElementById("field-date");
+
+    /* Don't offer dates in the past. */
+    if (dateInput) {
+      var now = new Date();
+      var localMidnight = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+      dateInput.min = localMidnight.toISOString().split("T")[0];
+    }
+
+    function showError(key, message) {
+      var errorEl = form.querySelector('[data-error-for="' + key + '"]');
+      if (!errorEl) return;
+      var wrapper = errorEl.closest(".form-field, .form-fieldset");
+      if (wrapper) wrapper.classList.add("has-error");
+      errorEl.textContent = message;
+    }
+
+    function clearError(key) {
+      var errorEl = form.querySelector('[data-error-for="' + key + '"]');
+      if (!errorEl) return;
+      var wrapper = errorEl.closest(".form-field, .form-fieldset");
+      if (wrapper) wrapper.classList.remove("has-error");
+      errorEl.textContent = "";
+    }
+
+    function currentIntent() {
+      var checked = form.querySelector('input[name="intent"]:checked');
+      return checked ? checked.value : "";
+    }
+
+    function isEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function isPhone(value) {
+      return /^[+()\d][\d\s()+-]{6,}$/.test(value);
+    }
+
+    /* ---- Conditional UI ---- */
+
+    /* Booking path reveals package + date and relabels the button. */
+    function syncIntent() {
+      var intent = currentIntent();
+
+      intentPanels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-intent-panel") !== intent;
+      });
+
+      if (submitBtn) {
+        submitBtn.textContent = LABELS[intent]
+          ? LABELS[intent].button
+          : LABELS["Review first"].button;
+      }
+
+      if (intent !== "Ready to book") {
+        clearError("field-package");
+        clearError("field-date");
+      }
+    }
+
+    form.querySelectorAll('input[name="intent"]').forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        clearError("intent");
+        syncIntent();
+      });
+    });
+
+    /* ---- Validation ---- */
+    function validate() {
+      var ok = true;
+
+      var name = document.getElementById("field-name");
+      var email = document.getElementById("field-email");
+      var phone = document.getElementById("field-phone");
+      var listing = document.getElementById("field-listing");
+      var privacy = document.getElementById("field-privacy");
+
+      if (name.value.trim() === "") {
+        showError("field-name", "This field is required.");
+        ok = false;
+      } else {
+        clearError("field-name");
+      }
+
+      if (email.value.trim() === "") {
+        showError("field-email", "This field is required.");
+        ok = false;
+      } else if (!isEmail(email.value.trim())) {
+        showError("field-email", "Enter a valid email address.");
+        ok = false;
+      } else {
+        clearError("field-email");
+      }
+
+      /* Phone is optional, but check the format when one is given. */
+      if (phone.value.trim() !== "" && !isPhone(phone.value.trim())) {
+        showError("field-phone", "Enter a valid phone number.");
+        ok = false;
+      } else {
+        clearError("field-phone");
+      }
+
+      if (listing.value.trim() === "") {
+        showError("field-listing", "This field is required.");
+        ok = false;
+      } else {
+        clearError("field-listing");
+      }
+
+      var intent = currentIntent();
+      if (intent === "") {
+        showError("intent", "Please choose an option.");
+        ok = false;
+      } else {
+        clearError("intent");
+      }
+
+      if (intent === "Ready to book") {
+        if (!packageSelect.value) {
+          showError("field-package", "Please choose a package.");
+          ok = false;
+        } else {
+          clearError("field-package");
+        }
+
+        if (!dateInput.value) {
+          showError("field-date", "Please choose a preferred date.");
+          ok = false;
+        } else {
+          clearError("field-date");
+        }
+      }
+
+      if (!privacy.checked) {
+        showError("field-privacy", "Please tick this box so I can reply to you.");
+        ok = false;
+      } else {
+        clearError("field-privacy");
+      }
+
+      return ok;
+    }
+
+    form
+      .querySelectorAll("#field-name, #field-email, #field-phone, #field-listing")
+      .forEach(function (field) {
+        field.addEventListener("blur", function () {
+          if (field.value.trim() !== "") validate();
+        });
+      });
+
+    /* ---- Submit: post to Formspree, no WhatsApp redirect ---- */
+    function showConfirmation(text, isError) {
+      if (!confirmation) return;
+      confirmation.classList.toggle("contact-form__confirmation--error", !!isError);
+      confirmation.textContent = text;
+      confirmation.hidden = false;
+      confirmation.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      if (!validate()) {
+        var firstError = form.querySelector(
+          ".has-error input, .has-error select, .has-error textarea"
+        );
+        if (firstError) firstError.focus();
+        return;
+      }
+
+      var intent = currentIntent();
+      var formData = new FormData(form);
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Form submission failed");
+
+          form.reset();
+          syncIntent();
+          showConfirmation(
+            LABELS[intent] ? LABELS[intent].success : LABELS["Review first"].success,
+            false
+          );
+        })
+        .catch(function () {
+          showConfirmation(
+            "Sorry, something went wrong. Please try again or message me directly on WhatsApp.",
+            true
+          );
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          syncIntent();
+        });
+    });
+
+    /* ---------------------------------------------
+       Preselecting the booking path
+       Pricing cards carry a data-package label that
+       matches an option in the dropdown; the other
+       booking CTAs just switch the form to the
+       booking path and leave the choice open.
+    --------------------------------------------- */
+    function selectBookingPath() {
+      var bookRadio = form.querySelector('input[name="intent"][value="Ready to book"]');
+      if (bookRadio) bookRadio.checked = true;
+      syncIntent();
+    }
+
+    document.querySelectorAll("[data-package]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (packageSelect) packageSelect.value = btn.getAttribute("data-package");
+        selectBookingPath();
+      });
+    });
+
+    document.querySelectorAll("[data-intent-preselect]").forEach(function (btn) {
+      btn.addEventListener("click", selectBookingPath);
+    });
+
+    syncIntent();
+  }
+})();

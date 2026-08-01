@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="PLACEHOLDER placeholder">
+  <defs>
+    <pattern id="p" width="28" height="28" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="28" height="28" fill="#FFF3EC"/>
+      <rect width="14" height="28" fill="#FFD9CC"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#p)"/>
+  <g fill="#FF5A5F" font-family="Arial, sans-serif" text-anchor="middle">
+    <circle cx="800.0" cy="462.0" r="34" fill="none" stroke="#FF5A5F" stroke-width="4"/>
+    <circle cx="800.0" cy="462.0" r="14" fill="none" stroke="#FF5A5F" stroke-width="4"/>
+    <rect x="754.0" y="442.0" width="92" height="14" rx="4" fill="#FF5A5F"/>
+    <text x="800.0" y="540.0" font-size="26" font-weight="700">PLACEHOLDER</text>
+    <text x="800.0" y="572.0" font-size="16">Reemplazar con foto real (1600x1000)</text>
+  </g>
+</svg>
