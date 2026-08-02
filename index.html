@@ -349,7 +349,8 @@
     <div class="pricing-grid">
       <div class="price-card">
         <h3 class="price-card__name">Essential</h3>
-        <p class="price-card__photos">8 photos + free guide</p>
+        <p class="price-card__photos">8 edited photos</p>
+        <p class="price-card__playbook-note">Includes First Look Listing Playbook</p>
         <p class="price-card__price">$129</p>
         <p class="price-card__best-for">Best for a studio, private room, guest suite or very small stay.</p>
         <a href="#contact" class="btn btn--outline btn--sm" data-package="Essential, 8 photos ($129)">Book this package</a>
@@ -357,7 +358,8 @@
 
       <div class="price-card">
         <h3 class="price-card__name">Standard</h3>
-        <p class="price-card__photos">12 photos + free guide</p>
+        <p class="price-card__photos">12 edited photos</p>
+        <p class="price-card__playbook-note">Includes First Look Listing Playbook</p>
         <p class="price-card__price">$169</p>
         <p class="price-card__best-for">Best for a one-bedroom property, compact holiday home or simple short-term rental.</p>
         <a href="#contact" class="btn btn--outline btn--sm" data-package="Standard, 12 photos ($169)">Book this package</a>
@@ -366,7 +368,8 @@
       <div class="price-card price-card--featured">
         <span class="price-card__ribbon">Best value</span>
         <h3 class="price-card__name">Complete</h3>
-        <p class="price-card__photos">16 photos + free guide</p>
+        <p class="price-card__photos">16 edited photos</p>
+        <p class="price-card__playbook-note">Includes First Look Listing Playbook</p>
         <p class="price-card__price">$199</p>
         <p class="price-card__best-for">Best for larger homes, multiple bedrooms, outdoor areas, views or properties with more to show.</p>
         <a href="#contact" class="btn btn--primary btn--sm" data-package="Complete, 16 photos ($199)">Book this package</a>
@@ -384,7 +387,7 @@
 
     <div class="bonus-block">
       <h3 class="bonus-block__title">Included with every package</h3>
-      <p class="bonus-block__body">Included: a short free guide with preparation tips, cover photo advice and opening gallery guidance.</p>
+      <p class="bonus-block__body">Every package includes the First Look Listing Playbook — a practical guide to help you choose your cover image, opening gallery order and how to use your new photos more effectively.</p>
     </div>
 
     <div class="deliverables">
@@ -400,8 +403,8 @@
         <h4 class="deliverables__group-title">Listing-ready editing</h4>
         <ul class="deliverables__list">
           <li>Brightness, colour and clarity correction</li>
-          <li>Natural-looking visual enhancements</li>
-          <li>Photos prepared for your listing</li>
+          <li>Natural, realistic editing</li>
+          <li>Listing-ready images</li>
         </ul>
       </div>
       <div class="deliverables__group">
@@ -416,6 +419,7 @@
     </div>
 
     <p class="disclaimer pricing__editing-disclaimer">Editing may include light, colour, composition, cleanup and minor styling enhancements. It does not change the property's core features, room size, available amenities or layout.</p>
+    <p class="disclaimer">Photography packages include practical guidance on image use, cover photo and opening gallery order. They do not include a full listing audit, pricing setup or channel management.</p>
 
     <div class="pricing-note">
       <h3 class="pricing-note__title">Your listing should feel easy to understand</h3>
@@ -608,12 +612,35 @@
 </section>
 
 <!-- =========================================
+     14B. HOST PLAYBOOK WAITLIST
+========================================= -->
+<section class="section playbook">
+  <div class="container container--narrow">
+    <h2 class="section__title">Not ready for a photo review yet?</h2>
+    <p class="section__body">The free First Look Host Playbook is being created for short-term rental hosts who want practical ideas on photos, guest experience, communication and reviews before sending their listing for review.</p>
+    <p class="playbook__note">Join the list and I'll send it when it's ready.</p>
+
+    <form id="playbook-form" class="playbook-form" method="POST" action="https://formspree.io/f/mojgopoa" novalidate>
+      <input type="hidden" name="_subject" value="Host Playbook waitlist">
+      <input type="hidden" name="form_type" value="Host Playbook waitlist">
+      <div class="form-field">
+        <label for="playbook-email" class="sr-only">Your email</label>
+        <input type="email" id="playbook-email" name="email" placeholder="Your email" required>
+        <span class="form-error" data-error-for="playbook-email"></span>
+      </div>
+      <button type="submit" class="btn btn--outline btn--sm playbook-form__submit" data-playbook-submit>Send me the playbook when it's ready</button>
+      <p class="playbook-form__confirmation" data-playbook-confirmation hidden role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- =========================================
      15. CTA FINAL + FORMULARIO
 ========================================= -->
 <section class="section contact" id="contact">
   <div class="container container--narrow">
     <h2 class="section__title">Request a photo review or photo session</h2>
-    <p class="section__lead">Send your listing link and choose whether you want a free review first or are ready to book.</p>
+    <p class="section__lead">Send your listing link and choose whether you want honest feedback first or are ready to request a photo session.</p>
 
     <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/mojgopoa" novalidate>
       <div class="form-field">
@@ -646,15 +673,15 @@
       </div>
 
       <fieldset class="form-fieldset">
-        <legend>Are you ready to book? <span class="required-mark" aria-hidden="true">*</span></legend>
+        <legend>What would you like to start with? <span class="required-mark" aria-hidden="true">*</span></legend>
         <div class="form-options">
           <label class="form-option">
-            <input type="radio" name="intent" value="Ready to book" checked required>
-            <span>Yes, I'd like to book a photo session</span>
+            <input type="radio" name="intent" value="Review first" checked required>
+            <span>Request a free photo review</span>
           </label>
           <label class="form-option">
-            <input type="radio" name="intent" value="Review first" required>
-            <span>No, I'd like a free photo review first</span>
+            <input type="radio" name="intent" value="Ready to book" required>
+            <span>Book a photo session</span>
           </label>
         </div>
         <span class="form-error" data-error-for="intent"></span>
@@ -687,7 +714,7 @@
         <span class="form-error" data-error-for="field-privacy"></span>
       </div>
 
-      <button type="submit" class="btn btn--primary btn--lg contact-form__submit" data-submit-label>Request a photo session</button>
+      <button type="submit" class="btn btn--primary btn--lg contact-form__submit" data-submit-label>Request my free photo review</button>
 
       <p class="contact-form__confirmation" data-form-confirmation hidden role="status"></p>
     </form>

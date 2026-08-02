@@ -579,6 +579,7 @@ h1, h2, h3, p { margin: 0; }
   padding-top: var(--space-2);
 }
 .disclaimer a { color: var(--color-accent); }
+.disclaimer + .disclaimer { border-top: none; margin-top: 0.4rem; padding-top: 0; }
 .pricing__editing-disclaimer { margin-bottom: var(--space-3); }
 
 /* ---------- Common issues (section 7B) ---------- */
@@ -657,6 +658,7 @@ h1, h2, h3, p { margin: 0; }
 }
 .price-card__name { font-size: 1.2rem; font-weight: 700; }
 .price-card__photos { color: var(--color-text-secondary); font-size: 0.95rem; }
+.price-card__playbook-note { color: var(--color-text-secondary); font-size: 0.82rem; }
 .price-card__price { font-size: 2rem; font-weight: 700; margin: 0.3rem 0; }
 .price-card__was {
   text-decoration: line-through;
@@ -917,6 +919,47 @@ h1, h2, h3, p { margin: 0; }
 }
 .faq-item[open] summary::after { content: "−"; }
 .faq-item p { margin-top: 0.75rem; color: var(--color-text-secondary); }
+
+/* ---------- Host Playbook waitlist (section 14B) ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.playbook {
+  background: var(--color-bg-alt);
+}
+.playbook__note {
+  color: var(--color-text-secondary);
+  font-size: 0.92rem;
+  margin-top: 0.3rem;
+}
+.playbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  max-width: 26rem;
+}
+.playbook-form__submit { align-self: flex-start; }
+.playbook-form__confirmation {
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  font-weight: 600;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+}
+.playbook-form__confirmation--error {
+  background: transparent;
+  border: 1px solid var(--color-accent-dark);
+}
 
 /* ---------- Contact form (section 15) ---------- */
 .contact__support-text {

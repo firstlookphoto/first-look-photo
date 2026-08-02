@@ -166,7 +166,7 @@
         success: "Thanks — I'll check availability for your preferred date and get back to you shortly to confirm the photo session, package and next steps."
       },
       "Review first": {
-        button: "Send my listing for review",
+        button: "Request my free photo review",
         success: "I'll review your listing and get back to you within 48 hours."
       }
     };
@@ -406,5 +406,71 @@
     });
 
     syncIntent();
+  }
+
+  /* ---------------------------------------------
+     Host Playbook waitlist
+     Small standalone form: email only, posts to the
+     same Formspree endpoint as the main form but
+     tagged via hidden fields so submissions are easy
+     to tell apart in the inbox.
+  --------------------------------------------- */
+  var playbookForm = document.getElementById("playbook-form");
+  if (playbookForm) {
+    var playbookEmail = document.getElementById("playbook-email");
+    var playbookSubmit = playbookForm.querySelector("[data-playbook-submit]");
+    var playbookConfirmation = playbookForm.querySelector("[data-playbook-confirmation]");
+    var playbookSubmitLabel = playbookSubmit.textContent;
+
+    function isPlaybookEmailValid(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function showPlaybookConfirmation(text, isError) {
+      if (!playbookConfirmation) return;
+      playbookConfirmation.classList.toggle("playbook-form__confirmation--error", !!isError);
+      playbookConfirmation.textContent = text;
+      playbookConfirmation.hidden = false;
+    }
+
+    playbookForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var value = playbookEmail.value.trim();
+      var errorEl = playbookForm.querySelector('[data-error-for="playbook-email"]');
+      var fieldWrapper = playbookEmail.closest(".form-field");
+
+      if (!isPlaybookEmailValid(value)) {
+        if (errorEl) errorEl.textContent = "Enter a valid email address.";
+        if (fieldWrapper) fieldWrapper.classList.add("has-error");
+        playbookEmail.focus();
+        return;
+      }
+      if (errorEl) errorEl.textContent = "";
+      if (fieldWrapper) fieldWrapper.classList.remove("has-error");
+
+      var formData = new FormData(playbookForm);
+
+      playbookSubmit.disabled = true;
+      playbookSubmit.textContent = "Sending…";
+
+      fetch(playbookForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Playbook form submission failed");
+          playbookForm.reset();
+          showPlaybookConfirmation("Thanks — I'll email you the Host Playbook as soon as it's ready.", false);
+        })
+        .catch(function () {
+          showPlaybookConfirmation("Sorry, something went wrong. Please try again later.", true);
+        })
+        .finally(function () {
+          playbookSubmit.disabled = false;
+          playbookSubmit.textContent = playbookSubmitLabel;
+        });
+    });
   }
 })();
