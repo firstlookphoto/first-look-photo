@@ -581,29 +581,30 @@ h1, h2, h3, p { margin: 0; }
 .disclaimer a { color: var(--color-accent); }
 .pricing__editing-disclaimer { margin-bottom: var(--space-3); }
 
-/* ---------- Reviews (section 7B) ---------- */
-.reviews__note {
+/* ---------- Common issues (section 7B) ---------- */
+.issues__note {
   color: var(--color-text-secondary);
   font-size: 0.9rem;
   margin-bottom: var(--space-3);
+  max-width: 68ch;
 }
-.reviews-grid {
+.issues-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-3);
 }
 @media (min-width: 700px) {
-  .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+  .issues-grid { grid-template-columns: repeat(3, 1fr); }
 }
-.review-card {
+.issue-card {
   margin: 0;
   background: var(--color-bg-alt);
   border-radius: var(--radius-md);
   padding: var(--space-3);
   box-shadow: var(--shadow-card);
 }
-.review-card p { font-size: 0.98rem; color: var(--color-text); margin-bottom: var(--space-2); }
-.review-card footer { font-size: 0.85rem; color: var(--color-text-secondary); font-weight: 600; }
+.issue-card__title { font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.4rem; }
+.issue-card__body { font-size: 0.92rem; color: var(--color-text-secondary); }
 
 /* ---------- Pricing (section 8) ---------- */
 .pricing__investment-note {
