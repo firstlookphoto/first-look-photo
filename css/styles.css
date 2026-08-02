@@ -205,6 +205,18 @@ h1, h2, h3, p { margin: 0; }
   text-align: center;
   margin-top: var(--space-5);
 }
+.cta-repeat__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+.cta-repeat__note {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  max-width: 46ch;
+  margin: 0 auto;
+}
 
 /* ---------- Header ---------- */
 .site-header {
