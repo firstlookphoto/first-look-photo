@@ -1001,6 +1001,8 @@ section.cta-bridge--final .cta-bridge__actions { margin-top: var(--space-1); }
   font-size: 1.05rem;
   font-weight: 500;
   color: var(--color-text-secondary);
+}
+.upgrade-box__price-was-amount {
   text-decoration: line-through;
 }
 .upgrade-box__price-note {
@@ -1214,6 +1216,10 @@ section.cta-bridge--final .cta-bridge__actions { margin-top: var(--space-1); }
   color: var(--color-accent-dark);
   font-size: 0.85rem;
   min-height: 1.1em;
+}
+.form-field__helper {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
 }
 .contact-form__submit { align-self: flex-start; margin-top: var(--space-2); }
 .contact-form__confirmation {

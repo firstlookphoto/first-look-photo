@@ -163,7 +163,7 @@
     var LABELS = {
       "Ready to book": {
         button: "Request my photo session",
-        success: "Thanks — I'll check availability for your preferred date and get back to you shortly to confirm the photo session, package and next steps."
+        success: "Thanks — I'll check availability for your preferred timing and get back to you shortly to confirm the photo session, package and next steps."
       },
       "Review first": {
         button: "Request my free photo review",
@@ -177,14 +177,7 @@
       form.querySelectorAll("[data-intent-panel]")
     );
     var packageSelect = document.getElementById("field-package");
-    var dateInput = document.getElementById("field-date");
-
-    /* Don't offer dates in the past. */
-    if (dateInput) {
-      var now = new Date();
-      var localMidnight = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
-      dateInput.min = localMidnight.toISOString().split("T")[0];
-    }
+    var timingSelect = document.getElementById("field-timing");
 
     function showError(key, message) {
       var errorEl = form.querySelector('[data-error-for="' + key + '"]');
@@ -233,7 +226,7 @@
 
       if (intent !== "Ready to book") {
         clearError("field-package");
-        clearError("field-date");
+        clearError("field-timing");
       }
     }
 
@@ -302,11 +295,11 @@
           clearError("field-package");
         }
 
-        if (!dateInput.value) {
-          showError("field-date", "Please choose a preferred date.");
+        if (!timingSelect.value) {
+          showError("field-timing", "Please choose a preferred timing.");
           ok = false;
         } else {
-          clearError("field-date");
+          clearError("field-timing");
         }
       }
 

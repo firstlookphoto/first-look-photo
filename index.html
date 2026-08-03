@@ -78,7 +78,7 @@
   <div class="container hero__inner">
     <div class="hero__copy">
       <h1>Help your short-term rental win the first look.</h1>
-      <p class="hero__subtitle">Professional Airbnb, Booking.com and holiday rental photography for hosts in Picton, Blenheim and Marlborough.</p>
+      <p class="hero__subtitle">Professional Airbnb, Booking.com and holiday rental photography and listing guidance for short-term rental hosts who want clearer, more bookable listings.</p>
       <p class="hero__supporting">Start with a free photo review. I'll look at your current listing and tell you honestly whether you need nothing, a remote photo upgrade, or a new photo session.</p>
       <div class="hero__ctas">
         <div class="hero__cta-row">
@@ -557,17 +557,7 @@
     <p class="section__body">If your photos feel outdated, inconsistent or weaker than similar listings, send your listing first. I'll tell you whether a session is worth it before you book.</p>
 
     <div class="low-risk-block">
-      <h3 class="low-risk-block__title">Not sure what needs improving?</h3>
-      <p class="low-risk-block__body">Send me your Airbnb, Booking.com or holiday rental listing. I'll review the current photos and explain the clearest opportunities before you decide whether to book a session.</p>
-      <p class="low-risk-block__zero-risk">If, after reviewing your listing, I don't think new photos would make a real difference, I'll tell you honestly. No pressure to book.</p>
       <a href="#contact" class="btn btn--primary btn--lg" data-intent-preselect>Check availability</a>
-      <p class="low-risk-block__note">The free review covers general observations about your cover photo, lighting, gallery order and consistency. It is not a full audit.</p>
-      <p class="low-risk-block__example-intro">Your free review may include notes like:</p>
-      <ul class="low-risk-block__example-list">
-        <li>Your cover photo could be brighter.</li>
-        <li>The first few images don't show the property's strongest features.</li>
-        <li>The gallery order could make the space easier to understand.</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -579,8 +569,8 @@
   <div class="container container--narrow">
     <div class="upgrade-box">
       <p class="upgrade-box__eyebrow">If a session isn't the answer</p>
-      <h2 class="section__title">Sometimes the photos can be rescued</h2>
       <p class="section__body">Not every listing needs a new shoot. That is why every request starts with a free review.</p>
+      <h2 class="section__title">Sometimes the photos can be rescued.</h2>
       <p class="section__body">Sometimes the property is already shown from usable angles, but the images feel dark, flat, inconsistent or less professional than the stay deserves.</p>
       <p class="section__body">In those cases I may recommend a remote Listing Photo Upgrade: improving the photos you already have, without visiting the property, while keeping the real space honest and recognisable.</p>
 
@@ -597,9 +587,9 @@
       </ul>
 
       <div class="upgrade-box__price-row">
-        <span class="upgrade-box__price">$49</span>
-        <span class="upgrade-box__price-was">$99</span>
-        <span class="upgrade-box__price-note">Founding price for the first ten listings</span>
+        <span class="upgrade-box__price">$49 founding price</span>
+        <span class="upgrade-box__price-was">Usually <span class="upgrade-box__price-was-amount">$99</span></span>
+        <span class="upgrade-box__price-note">For the first 10 listings only</span>
       </div>
 
       <div class="upgrade-box__promise">
@@ -786,7 +776,7 @@
       </div>
 
       <div class="form-field">
-        <label for="field-phone">Phone / WhatsApp <span class="optional-tag">(optional)</span></label>
+        <label for="field-phone">WhatsApp contact <span class="optional-tag">(optional)</span></label>
         <input type="tel" id="field-phone" name="phone" autocomplete="tel">
         <span class="form-error" data-error-for="field-phone"></span>
       </div>
@@ -831,9 +821,17 @@
         </div>
 
         <div class="form-field">
-          <label for="field-date">Preferred date <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="date" id="field-date" name="date">
-          <span class="form-error" data-error-for="field-date"></span>
+          <label for="field-timing">Preferred timing <span class="required-mark" aria-hidden="true">*</span></label>
+          <select id="field-timing" name="timing">
+            <option value="">Select preferred timing</option>
+            <option value="As soon as possible">As soon as possible</option>
+            <option value="This week">This week</option>
+            <option value="Next week">Next week</option>
+            <option value="Within the next 2-3 weeks">Within the next 2&ndash;3 weeks</option>
+            <option value="I'm flexible">I'm flexible</option>
+          </select>
+          <p class="form-field__helper">Exact availability is confirmed after I review your listing and understand what level of help you need.</p>
+          <span class="form-error" data-error-for="field-timing"></span>
         </div>
       </div>
 
