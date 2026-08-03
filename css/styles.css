@@ -633,8 +633,11 @@ h1, h2, h3, p { margin: 0; }
   gap: var(--space-3);
   margin-bottom: var(--space-3);
 }
-@media (min-width: 800px) {
-  .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 640px) {
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .pricing-grid { grid-template-columns: repeat(4, 1fr); }
 }
 .price-card {
   position: relative;
