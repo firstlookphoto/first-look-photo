@@ -626,6 +626,15 @@ h1, h2, h3, p { margin: 0; }
 .issue-card__title { font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.4rem; }
 .issue-card__body { font-size: 0.92rem; color: var(--color-text-secondary); }
 
+/* ---------- Decision path (lowest-risk step) ---------- */
+.decision-path__closing {
+  margin-top: var(--space-3);
+  font-weight: 600;
+  color: var(--color-text);
+  max-width: 60ch;
+}
+.decision-path .btn { margin-top: var(--space-2); }
+
 /* ---------- Pricing (section 8) ---------- */
 .pricing__investment-note {
   font-size: 1.05rem;
