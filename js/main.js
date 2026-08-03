@@ -162,7 +162,7 @@
   if (form) {
     var LABELS = {
       "Ready to book": {
-        button: "Request a photo session",
+        button: "Request my photo session",
         success: "Thanks — I'll check availability for your preferred date and get back to you shortly to confirm the photo session, package and next steps."
       },
       "Review first": {
