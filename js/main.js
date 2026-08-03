@@ -473,4 +473,190 @@
         });
     });
   }
+
+  /* ---------------------------------------------
+     Host Playbook capture popup
+     Exit-intent (desktop) or scroll-depth (touch)
+     lead magnet for the free Host Playbook PDF.
+     Fires at most once per visitor: the localStorage
+     flag is set the moment the popup is shown, not
+     when the visitor submits, so closing it without
+     entering an email doesn't bring it back later.
+     The PDF downloads before the Formspree POST is
+     even sent, and a failed POST is retried once
+     silently — the visitor already has the file, so
+     nothing about the request is ever surfaced as an
+     error to them.
+  --------------------------------------------- */
+  var popupOverlay = document.getElementById("lp-popup-overlay");
+  if (popupOverlay) {
+    var POPUP_STORAGE_KEY = "flp_guide_popup_v1";
+    var POPUP_MIN_DELAY_MS = 25000;
+    var POPUP_SCROLL_THRESHOLD = 0.55;
+    var PDF_URL = "/First_Look_Host_Playbook.pdf";
+    /* Using the main Formspree form for now; the "source" field below
+       tags these leads. Swap in a dedicated Formspree endpoint for the
+       popup once one exists, so ebook leads stop mixing with review
+       and booking requests in the same inbox view. */
+    var POPUP_FORM_ENDPOINT = "https://formspree.io/f/mojgopoa";
+
+    var popupFormState = popupOverlay.querySelector("[data-lp-popup-form-state]");
+    var popupSuccessState = popupOverlay.querySelector("[data-lp-popup-success]");
+    var popupForm = document.getElementById("lp-popup-form");
+    var popupNameInput = document.getElementById("lp-popup-name");
+    var popupEmailInput = document.getElementById("lp-popup-email");
+    var popupSubmitBtn = popupForm.querySelector("[data-lp-popup-submit]");
+    var popupErrorEl = popupForm.querySelector("[data-lp-popup-error]");
+    var popupCloseBtn = document.getElementById("lp-popup-close");
+    var contactFormEl = document.getElementById("contact-form");
+
+    var armed = false;
+    var shown = false;
+    var scrollHandler = null;
+
+    function popupAlreadySeen() {
+      try {
+        return localStorage.getItem(POPUP_STORAGE_KEY) === "1";
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function markPopupSeen() {
+      try {
+        localStorage.setItem(POPUP_STORAGE_KEY, "1");
+      } catch (err) {
+        /* localStorage unavailable (private mode, etc.) — fail open. */
+      }
+    }
+
+    function contactFormOnScreen() {
+      if (!contactFormEl) return false;
+      var rect = contactFormEl.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    function detachPopupTriggers() {
+      document.removeEventListener("mouseout", onPopupMouseOut);
+      if (scrollHandler) {
+        window.removeEventListener("scroll", scrollHandler);
+        scrollHandler = null;
+      }
+    }
+
+    function openPopup() {
+      if (shown || popupAlreadySeen() || contactFormOnScreen()) return;
+      shown = true;
+      markPopupSeen();
+      detachPopupTriggers();
+      popupOverlay.hidden = false;
+      if (popupNameInput) popupNameInput.focus();
+    }
+
+    function closePopup() {
+      popupOverlay.hidden = true;
+    }
+
+    function onPopupMouseOut(e) {
+      if (!armed || e.relatedTarget || e.clientY > 0) return;
+      openPopup();
+    }
+
+    function onPopupScroll() {
+      if (!armed) return;
+      var doc = document.documentElement;
+      var depth = (window.scrollY + window.innerHeight) / doc.scrollHeight;
+      if (depth > POPUP_SCROLL_THRESHOLD) openPopup();
+    }
+
+    if (!popupAlreadySeen()) {
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          armed = true;
+        }, POPUP_MIN_DELAY_MS);
+      });
+
+      var isCoarsePointer =
+        window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+
+      if (isCoarsePointer) {
+        scrollHandler = onPopupScroll;
+        window.addEventListener("scroll", scrollHandler, { passive: true });
+      } else {
+        document.addEventListener("mouseout", onPopupMouseOut);
+      }
+    }
+
+    popupCloseBtn.addEventListener("click", closePopup);
+    popupOverlay.addEventListener("click", function (e) {
+      if (e.target === popupOverlay) closePopup();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !popupOverlay.hidden) closePopup();
+    });
+
+    function isValidPopupEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function downloadPlaybook() {
+      var link = document.createElement("a");
+      link.href = PDF_URL;
+      link.download = "";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function submitPopupLead(formData, attempt) {
+      fetch(POPUP_FORM_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Popup form submission failed");
+        })
+        .catch(function (err) {
+          if (attempt < 1) {
+            setTimeout(function () {
+              submitPopupLead(formData, attempt + 1);
+            }, 1500);
+          } else {
+            console.error("Host Playbook popup: submission failed after retry.", err);
+          }
+        });
+    }
+
+    popupForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var name = popupNameInput.value.trim();
+      var email = popupEmailInput.value.trim();
+
+      if (!name || !isValidPopupEmail(email)) {
+        if (popupErrorEl) {
+          popupErrorEl.textContent = "Please enter your name and a valid email.";
+          popupErrorEl.hidden = false;
+        }
+        return;
+      }
+      if (popupErrorEl) popupErrorEl.hidden = true;
+
+      var formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("source", "Host Playbook popup");
+
+      popupSubmitBtn.disabled = true;
+
+      /* Download first: the visitor keeps the guide even if the
+         network request below never completes. */
+      downloadPlaybook();
+      submitPopupLead(formData, 0);
+
+      if (popupFormState) popupFormState.hidden = true;
+      if (popupSuccessState) popupSuccessState.hidden = false;
+    });
+  }
 })();

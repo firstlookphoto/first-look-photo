@@ -409,7 +409,7 @@
       <li class="process-step">
         <span class="process-step__number">1</span>
         <h3 class="process-step__title">Send your listing</h3>
-        <p class="process-step__body">I review your current photos, cover image and opening gallery to understand the clearest opportunities.</p>
+        <p class="process-step__body">I review your current photos and tell you which of three things you need: nothing at all, a remote upgrade of the photos you already have, or a new session.</p>
       </li>
       <li class="process-step">
         <span class="process-step__number">2</span>
@@ -520,6 +520,45 @@
 </section>
 
 <!-- =========================================
+     13B. REMOTE UPGRADE
+========================================= -->
+<section class="section upgrade" id="upgrade">
+  <div class="container container--narrow">
+    <div class="upgrade-box">
+      <p class="upgrade-box__eyebrow">If a session isn't the answer</p>
+      <h2 class="section__title">Sometimes the photos can be rescued</h2>
+      <p class="section__body">Not every listing needs a new photo session. Sometimes the property is already shown from usable angles, but the images feel dark, flat, inconsistent or less professional than the stay deserves.</p>
+      <p class="section__body">In those cases I may recommend a remote Listing Photo Upgrade: improving the photos you already have, without visiting the property, while keeping the real space honest and recognisable.</p>
+
+      <ul class="check-list upgrade-box__list">
+        <li>Ten photos improved, chosen from up to twenty you send</li>
+        <li>Light, exposure and white balance correction</li>
+        <li>Straighter verticals and cleaner perspective</li>
+        <li>More consistent colour across the gallery</li>
+        <li>Reduced visual distractions where appropriate</li>
+        <li>Which image should lead your listing, and a recommended gallery order</li>
+        <li>Three specific priorities for your property</li>
+        <li>A summary of exactly what was changed</li>
+        <li>Back within 48 hours</li>
+      </ul>
+
+      <div class="upgrade-box__price-row">
+        <span class="upgrade-box__price">$49</span>
+        <span class="upgrade-box__price-was">$99</span>
+        <span class="upgrade-box__price-note">Founding price for the first ten listings</span>
+      </div>
+
+      <div class="upgrade-box__promise">
+        <p><strong>We improve the photo, not the property.</strong> The goal is to make your existing images clearer, brighter and more professional — not to invent amenities, enlarge rooms, change layouts or show anything guests will not actually find. If a photo can't be improved honestly, I'll tell you instead of faking it.</p>
+      </div>
+
+      <a href="#contact" class="btn btn--primary btn--lg">Start with a free photo review</a>
+      <p class="upgrade-box__final-note">This starts with the free review. I'll only recommend an upgrade if your current photos are genuinely worth improving.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
      14. FAQ
 ========================================= -->
 <section class="section faq" id="faq">
@@ -530,6 +569,18 @@
       <details class="faq-item">
         <summary>Do you only photograph Airbnb properties?</summary>
         <p>No. Suitable for Booking.com, holiday homes, guest houses, B&amp;Bs, direct booking websites.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can you improve the photos I already have?</summary>
+        <p>Sometimes, yes. If your current photos have enough quality, resolution and accurate information, they may be suitable for a remote Listing Photo Upgrade. This can improve light, colour, perspective, consistency and overall presentation without needing a new photo session. It starts with the free review, because I need to see the photos before I can tell you whether they're worth improving.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I know if my photos can be improved or need retaking?</summary>
+        <p>It comes down to one question: is the information in the file? A dark photo usually has detail hiding in the shadows, so it can be recovered. A photo that isn't sharp doesn't have those edges anywhere, so it can't. And a room that was never photographed doesn't exist in any file. The free review tells you which of those you're dealing with, before you spend anything.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What will you never change in a photo?</summary>
+        <p>I don't add or remove permanent features, enlarge rooms, move walls or windows, create fake views, add amenities the property doesn't have, hide damage or wear, or change the number of beds. Editing and AI-assisted tools speed up correction, and every image is reviewed by a person before it reaches you — but they are not permission to change what the property is.</p>
       </details>
       <details class="faq-item">
         <summary>Can I use the photos on different platforms?</summary>
@@ -714,6 +765,39 @@
     <p class="site-footer__copy">&copy; 2026 First Look Photo</p>
   </div>
 </footer>
+
+<!-- =========================================
+     HOST PLAYBOOK CAPTURE POPUP
+========================================= -->
+<div class="lp-popup-overlay" id="lp-popup-overlay" hidden>
+  <div class="lp-popup" role="dialog" aria-modal="true" aria-labelledby="lp-popup-title">
+    <button type="button" class="lp-popup__close" id="lp-popup-close" aria-label="Close">&times;</button>
+
+    <div data-lp-popup-form-state>
+      <h2 class="lp-popup__title" id="lp-popup-title">Get the free First Look Host Playbook</h2>
+      <p class="lp-popup__body-text">Practical ideas on photos, guest experience, communication and reviews — before you send your listing for review.</p>
+
+      <form id="lp-popup-form" class="lp-popup__form" novalidate>
+        <div class="form-field">
+          <label for="lp-popup-name" class="sr-only">Name</label>
+          <input type="text" id="lp-popup-name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label for="lp-popup-email" class="sr-only">Email</label>
+          <input type="email" id="lp-popup-email" name="email" placeholder="Your email" required>
+        </div>
+        <span class="form-error" data-lp-popup-error hidden></span>
+        <button type="submit" class="btn btn--primary btn--lg lp-popup__submit" data-lp-popup-submit>Send me the Playbook</button>
+      </form>
+    </div>
+
+    <div data-lp-popup-success hidden>
+      <h2 class="lp-popup__title">Your Playbook is downloading</h2>
+      <p class="lp-popup__body-text">If the download didn't start automatically, use the button below.</p>
+      <a href="/First_Look_Host_Playbook.pdf" download class="btn btn--outline btn--sm">Download the Playbook again</a>
+    </div>
+  </div>
+</div>
 
 <script src="js/main.js" defer></script>
 </body>
