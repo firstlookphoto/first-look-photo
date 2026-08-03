@@ -1010,6 +1010,11 @@ section.cta-bridge--final .cta-bridge__actions { margin-top: var(--space-1); }
   color: var(--color-text-secondary);
   width: 100%;
 }
+.upgrade-box__price-condition {
+  margin-top: var(--space-1);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
 .upgrade-box__promise {
   margin: var(--space-3) 0;
   border-left: 3px solid var(--color-accent);
