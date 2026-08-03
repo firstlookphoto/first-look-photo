@@ -635,6 +635,38 @@ h1, h2, h3, p { margin: 0; }
 }
 .decision-path .btn { margin-top: var(--space-2); }
 
+/* ---------- CTA bridges (mid-scroll conversion points) ---------- */
+.cta-bridge {
+  text-align: center;
+  margin-top: var(--space-4);
+}
+.cta-bridge__heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+.cta-bridge__text {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  max-width: 46ch;
+  margin: 0 auto var(--space-2);
+}
+.cta-bridge__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+@media (min-width: 480px) {
+  .cta-bridge__actions { flex-direction: row; justify-content: center; }
+}
+/* The final bridge is its own tight section, so it doesn't need the
+   extra top margin the inline bridges use to separate from the
+   content above them. */
+section.cta-bridge--final { margin-top: 0; }
+section.cta-bridge--final .cta-bridge__actions { margin-top: var(--space-1); }
+
 /* ---------- Pricing (section 8) ---------- */
 .pricing__investment-note {
   font-size: 1.05rem;
@@ -708,13 +740,6 @@ h1, h2, h3, p { margin: 0; }
 }
 .pricing-note--photos {
   margin: var(--space-3) 0;
-}
-.pricing__zero-risk-note {
-  text-align: center;
-  font-size: 0.98rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-5);
 }
 
 .bonus-block {
