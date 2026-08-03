@@ -311,13 +311,20 @@ h1, h2, h3, p { margin: 0; }
   color: rgba(255, 255, 255, 0.92);
   margin-bottom: var(--space-2);
 }
+.hero__supporting {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 42ch;
+  line-height: 1.45;
+  margin-bottom: var(--space-1);
+}
 .hero__ctas {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-2);
-  margin-top: var(--space-3);
-  margin-bottom: var(--space-3);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 /* Stacks on phones so neither button gets squeezed. */
 .hero__cta-row {
@@ -342,12 +349,12 @@ h1, h2, h3, p { margin: 0; }
 }
 .hero__microcopy + .hero__microcopy { margin-top: 0.4rem; }
 .badge-specialisation {
-  margin-top: var(--space-3);
+  margin-top: var(--space-2);
   display: inline-block;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.14);
-  padding: 0.5rem 0.9rem;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.35rem 0.7rem;
   border-radius: var(--radius-sm);
 }
 
@@ -1243,3 +1250,48 @@ h1, h2, h3, p { margin: 0; }
 .lp-popup__body-text { color: var(--color-text-secondary); margin-bottom: var(--space-3); }
 .lp-popup__form { display: flex; flex-direction: column; gap: var(--space-2); }
 .lp-popup__submit { width: 100%; justify-content: center; }
+
+/* ── COMMITMENTS ── */
+.commitments__intro {
+  text-align: center;
+  max-width: 34rem;
+  margin: 0 auto var(--space-4);
+  color: var(--color-text-secondary);
+}
+.commitments-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  background: var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+@media (min-width: 700px) {
+  .commitments-grid { grid-template-columns: 1fr 1fr; }
+}
+.commitment-item {
+  background: var(--color-bg);
+  padding: var(--space-3);
+}
+.commitment-item__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+.commitment-item__dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  transform: translateY(-1px);
+}
+.commitment-item__body {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
