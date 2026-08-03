@@ -476,8 +476,14 @@
 
   /* ---------------------------------------------
      Host Playbook capture popup
-     Exit-intent (desktop) or scroll-depth (touch)
-     lead magnet for the free Host Playbook PDF.
+     Mobile: opens after 45s on the page OR 65% scroll
+     depth, whichever comes first. Desktop: exit-intent,
+     armed after the same 45s delay. Stays out of the way
+     of the main conversion path — it never opens while
+     the contact form is on screen, or once the visitor
+     has clicked a free-review CTA (Get/Start a free photo
+     review, Check availability), even if that click
+     happens before the scroll/time threshold is reached.
      Fires at most once per visitor: the localStorage
      flag is set the moment the popup is shown, not
      when the visitor submits, so closing it without
@@ -491,8 +497,13 @@
   var popupOverlay = document.getElementById("lp-popup-overlay");
   if (popupOverlay) {
     var POPUP_STORAGE_KEY = "flp_guide_popup_v1";
-    var POPUP_MIN_DELAY_MS = 25000;
-    var POPUP_SCROLL_THRESHOLD = 0.55;
+    var POPUP_MIN_DELAY_MS = 45000;
+    var POPUP_SCROLL_THRESHOLD = 0.65;
+    /* Phrases (lowercased, substring match) that identify a free-review
+       CTA. Clicking one of these means the visitor is already moving
+       down the main conversion path, so the popup should stay out of
+       the way for the rest of the session. */
+    var REVIEW_CTA_PHRASES = ["free photo review", "check availability", "request a photo review"];
     var PDF_URL = "/First_Look_Host_Playbook.pdf";
     /* Using the main Formspree form for now; the "source" field below
        tags these leads. Swap in a dedicated Formspree endpoint for the
@@ -513,6 +524,7 @@
     var armed = false;
     var shown = false;
     var scrollHandler = null;
+    var reviewCtaClicked = false;
 
     function popupAlreadySeen() {
       try {
@@ -545,7 +557,7 @@
     }
 
     function openPopup() {
-      if (shown || popupAlreadySeen() || contactFormOnScreen()) return;
+      if (shown || popupAlreadySeen() || contactFormOnScreen() || reviewCtaClicked) return;
       shown = true;
       markPopupSeen();
       detachPopupTriggers();
@@ -563,28 +575,48 @@
     }
 
     function onPopupScroll() {
-      if (!armed) return;
+      /* Independent of the timer below — either condition alone is
+         enough to trigger the popup on mobile. */
       var doc = document.documentElement;
       var depth = (window.scrollY + window.innerHeight) / doc.scrollHeight;
       if (depth > POPUP_SCROLL_THRESHOLD) openPopup();
     }
 
     if (!popupAlreadySeen()) {
-      window.addEventListener("load", function () {
-        setTimeout(function () {
-          armed = true;
-        }, POPUP_MIN_DELAY_MS);
-      });
-
       var isCoarsePointer =
         window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
 
       if (isCoarsePointer) {
+        /* Mobile: 45s on the page OR 65% scroll depth, whichever
+           happens first. */
+        window.addEventListener("load", function () {
+          setTimeout(openPopup, POPUP_MIN_DELAY_MS);
+        });
         scrollHandler = onPopupScroll;
         window.addEventListener("scroll", scrollHandler, { passive: true });
       } else {
+        /* Desktop: exit-intent only, armed after the same minimum
+           delay so it can't fire the moment the page loads. */
+        window.addEventListener("load", function () {
+          setTimeout(function () {
+            armed = true;
+          }, POPUP_MIN_DELAY_MS);
+        });
         document.addEventListener("mouseout", onPopupMouseOut);
       }
+
+      document.addEventListener("click", function (e) {
+        var el = e.target.closest("a, button");
+        if (!el) return;
+        var txt = (el.textContent || "").trim().toLowerCase();
+        for (var i = 0; i < REVIEW_CTA_PHRASES.length; i++) {
+          if (txt.indexOf(REVIEW_CTA_PHRASES[i]) !== -1) {
+            reviewCtaClicked = true;
+            detachPopupTriggers();
+            break;
+          }
+        }
+      });
     }
 
     popupCloseBtn.addEventListener("click", closePopup);
