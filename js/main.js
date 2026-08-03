@@ -163,7 +163,7 @@
     var LABELS = {
       "Ready to book": {
         button: "Request my photo session",
-        success: "Thanks — I'll check availability for your preferred timing and get back to you shortly to confirm the photo session, package and next steps."
+        success: "Thanks. I'll check availability for your preferred timing and get back to you shortly to confirm the photo session, package and next steps."
       },
       "Review first": {
         button: "Request my free photo review",
@@ -455,7 +455,7 @@
         .then(function (response) {
           if (!response.ok) throw new Error("Playbook form submission failed");
           playbookForm.reset();
-          showPlaybookConfirmation("Thanks — I'll email you the Host Playbook as soon as it's ready.", false);
+          showPlaybookConfirmation("Thanks. I'll email you the Host Playbook as soon as it's ready.", false);
         })
         .catch(function () {
           showPlaybookConfirmation("Sorry, something went wrong. Please try again later.", true);
