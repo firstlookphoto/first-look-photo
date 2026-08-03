@@ -475,6 +475,24 @@
   }
 
   /* ---------------------------------------------
+     Portfolio reveal (mobile only)
+     A curated 8-image subset is marked in the HTML
+     with .portfolio-item--mobile-first; CSS hides the
+     rest below 700px. This just toggles the class that
+     reveals them, and flips the button label to match.
+  --------------------------------------------- */
+  var portfolioGrid = document.querySelector(".portfolio-grid");
+  var portfolioReveal = document.querySelector("[data-portfolio-reveal]");
+  if (portfolioGrid && portfolioReveal) {
+    portfolioReveal.addEventListener("click", function () {
+      var expanded = portfolioGrid.classList.toggle("portfolio-grid--expanded");
+      portfolioReveal.textContent = expanded
+        ? "Show fewer photos"
+        : "See more portfolio photos";
+    });
+  }
+
+  /* ---------------------------------------------
      Host Playbook capture popup
      Mobile: opens after 45s on the page OR 65% scroll
      depth, whichever comes first. Desktop: exit-intent,
