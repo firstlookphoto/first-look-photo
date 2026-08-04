@@ -1275,6 +1275,9 @@ section.cta-bridge--final .cta-bridge__actions { margin-top: var(--space-1); }
   font-size: 0.88rem;
 }
 .site-footer__disclaimer { font-weight: 600; color: var(--color-text); }
+.site-footer__location a { color: var(--color-text-secondary); }
+.site-footer__links { font-size: 0.82rem; }
+.site-footer__links a { color: var(--color-text-secondary); text-decoration: underline; }
 .site-footer__copy { margin-top: var(--space-2); font-size: 0.78rem; }
 
 /* ---------- Host Playbook capture popup ---------- */
