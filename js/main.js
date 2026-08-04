@@ -455,7 +455,7 @@
         .then(function (response) {
           if (!response.ok) throw new Error("Playbook form submission failed");
           playbookForm.reset();
-          showPlaybookConfirmation("Thanks. I'll email you the Host Playbook as soon as it's ready.", false);
+          showPlaybookConfirmation("Thanks. I'll email you the Host Playbook shortly.", false);
         })
         .catch(function () {
           showPlaybookConfirmation("Sorry, something went wrong. Please try again later.", true);
