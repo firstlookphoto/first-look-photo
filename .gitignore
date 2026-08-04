@@ -1,2 +1,5 @@
 .DS_Store
 Estructura_Landing_Picton_Fotografia.md
+.env
+.env.local
+.vercel

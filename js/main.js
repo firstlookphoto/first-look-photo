@@ -132,6 +132,41 @@
   document.querySelectorAll("[data-ba-carousel]").forEach(initBaCarousel);
 
   /* ---------------------------------------------
+     Brevo lead sync
+     Fire-and-forget: adds/updates the contact in the
+     "First Look Photo - Playbook Leads" list via a Vercel
+     serverless function that holds the Brevo API key
+     server-side (api/brevo-lead.js). Runs alongside the
+     existing Formspree submission in each form handler
+     below and never blocks it or surfaces an error to the
+     visitor — losing a Brevo sync is invisible to them,
+     losing the Formspree notification is not. Same
+     one-retry pattern as the popup's own lead submit.
+  --------------------------------------------- */
+  var BREVO_ENDPOINT = "/api/brevo-lead";
+
+  function syncToBrevo(fields, attempt) {
+    attempt = attempt || 0;
+    fetch(BREVO_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(fields)
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error("Brevo sync failed");
+      })
+      .catch(function (err) {
+        if (attempt < 1) {
+          setTimeout(function () {
+            syncToBrevo(fields, attempt + 1);
+          }, 1500);
+        } else {
+          console.error("Brevo lead sync failed after retry.", err);
+        }
+      });
+  }
+
+  /* ---------------------------------------------
      FAQ accordion
      Only one question stays open at a time, so the
      FAQ list stays compact on mobile. Native
@@ -344,6 +379,17 @@
       var intent = currentIntent();
       var formData = new FormData(form);
 
+      syncToBrevo({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        listing: formData.get("listing"),
+        message: formData.get("message"),
+        lead_source: "contact_form",
+        lead_intent: intent === "Ready to book" ? "booking_request" : "free_photo_review",
+        package: intent === "Ready to book" ? formData.get("package") : "",
+        timing: intent === "Ready to book" ? formData.get("timing") : ""
+      });
+
       submitBtn.disabled = true;
       submitBtn.textContent = "Sending…";
 
@@ -441,6 +487,12 @@
       }
       if (errorEl) errorEl.textContent = "";
       if (fieldWrapper) fieldWrapper.classList.remove("has-error");
+
+      syncToBrevo({
+        email: value,
+        lead_source: "free_host_playbook",
+        lead_intent: "playbook_download"
+      });
 
       var formData = new FormData(playbookForm);
 
@@ -685,6 +737,13 @@
         return;
       }
       if (popupErrorEl) popupErrorEl.hidden = true;
+
+      syncToBrevo({
+        name: name,
+        email: email,
+        lead_source: "free_host_playbook",
+        lead_intent: "playbook_download"
+      });
 
       var formData = new FormData();
       formData.append("name", name);
