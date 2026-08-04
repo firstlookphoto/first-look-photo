@@ -839,6 +839,13 @@ section.cta-bridge--final .cta-bridge__actions { margin-top: var(--space-1); }
 .process-step__title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
 .process-step__body { color: var(--color-text-secondary); font-size: 0.92rem; }
 
+/* Simple plan reuses .process-list/.process-step, but stops at 3
+   columns instead of growing to 5 since it only has 3 steps. */
+.simple-plan-list { margin-bottom: var(--space-4); }
+@media (min-width: 1000px) {
+  .simple-plan-list { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* ---------- Portfolio (section 10) ---------- */
 .portfolio-grid {
   display: grid;
