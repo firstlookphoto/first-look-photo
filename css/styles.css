@@ -866,18 +866,6 @@ section.cta-bridge--final .cta-bridge__actions { margin-top: var(--space-1); }
 }
 .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
 
-.portfolio-reveal { display: none; }
-@media (max-width: 699px) {
-  .portfolio-item { display: none; }
-  .portfolio-item--mobile-first { display: block; }
-  .portfolio-grid--expanded .portfolio-item { display: block; }
-  .portfolio-reveal {
-    display: flex;
-    width: fit-content;
-    margin: var(--space-3) auto 0;
-  }
-}
-
 /* ---------- About (section 11) ---------- */
 .about__inner {
   display: flex;
