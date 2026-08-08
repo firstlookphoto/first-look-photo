@@ -53,6 +53,9 @@ module.exports = async function handler(req, res) {
   if (body.package) attributes.PACKAGE_INTEREST = String(body.package).slice(0, 200);
   if (body.timing) attributes.PREFERRED_DATE = String(body.timing).slice(0, 100);
   if (body.message) attributes.MESSAGE = String(body.message).slice(0, 2000);
+  if (body.utm_source) attributes.UTM_SOURCE = String(body.utm_source).slice(0, 200);
+  if (body.utm_campaign) attributes.UTM_CAMPAIGN = String(body.utm_campaign).slice(0, 200);
+  if (body.utm_content) attributes.UTM_CONTENT = String(body.utm_content).slice(0, 200);
 
   try {
     const brevoRes = await fetch(BREVO_API_URL, {

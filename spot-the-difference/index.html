@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can you spot what changed? · First Look Photo</title>
+<meta name="description" content="Five real listing photos, before and after. Same room, same furniture, nothing added. Can you spot what actually changed?">
+
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  /* Page-specific only — everything else reuses css/styles.css as-is. */
+  .std-header {
+    padding: var(--space-3) 0;
+  }
+  .std-hero {
+    text-align: center;
+    padding: var(--space-4) 0 var(--space-3);
+  }
+  .std-hero h1 {
+    margin-bottom: var(--space-2);
+  }
+  .std-hero p {
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+  .std-round {
+    margin: 0 0 var(--space-4);
+  }
+  .std-round__label {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+  }
+  .std-reveal {
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .std-reveal summary {
+    cursor: pointer;
+    padding: 0.9rem 0;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--color-accent);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .std-reveal summary::-webkit-details-marker { display: none; }
+  .std-reveal summary::after {
+    content: "+";
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--color-text-secondary);
+  }
+  .std-reveal[open] summary::after { content: "−"; }
+  .std-reveal p {
+    padding-bottom: 1rem;
+    color: var(--color-text-secondary);
+    font-size: 0.92rem;
+  }
+  .std-reveal p strong { color: var(--color-text); }
+  .std-twist {
+    text-align: center;
+    max-width: 34rem;
+    margin: 0 auto;
+    padding: var(--space-4) 0;
+  }
+  .std-twist h2 { margin-bottom: var(--space-2); }
+  .std-twist p { color: var(--color-text-secondary); }
+  .std-cta {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    text-align: center;
+    max-width: 30rem;
+    margin: 0 auto var(--space-5);
+  }
+  .std-cta h2 { margin-bottom: 0.5rem; }
+  .std-cta p { color: var(--color-text-secondary); margin-bottom: var(--space-3); }
+  .std-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .std-form input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font: inherit;
+  }
+  .std-form__confirmation { font-size: 0.9rem; margin-top: 0.5rem; }
+  .std-form__confirmation--error { color: #b3261e; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header std-header">
+  <div class="container site-header__inner">
+    <a href="../index.html" class="logo" aria-label="First Look Photo — home">
+      <svg class="logo__mark" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-width="2.4"/>
+        <circle cx="14" cy="14" r="5.4" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      </svg>
+      <span class="logo__stack">
+        <span class="logo__text">First Look <strong>Photo</strong></span>
+        <span class="logo__tagline">Short-term rental photography</span>
+      </span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+
+    <section class="std-hero">
+      <h1 class="section__title">Can you spot what changed?</h1>
+      <p>Same room. Same furniture. Nothing added. Five real listing photos, before and after — look at each one before you read the answer.</p>
+    </section>
+
+    <section class="std-round">
+      <p class="std-round__label">1 of 5</p>
+      <figure class="ba-compare" data-ba-compare data-ba-start="50">
+        <div class="ba-frame">
+          <div class="ba-image ba-image--before">
+            <span class="ba-tag">Before</span>
+            <picture><source srcset="../images/before-2.webp" type="image/webp"><img src="../images/before-2.jpg" alt="Living area before: an angled, cropped phone photo" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <div class="ba-image ba-image--after">
+            <span class="ba-tag">After</span>
+            <picture><source srcset="../images/after-2.webp" type="image/webp"><img src="../images/after-2.jpg" alt="Living area after: a level, well-composed wide shot" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <span class="ba-handle__icon">⟷</span>
+          </button>
+        </div>
+      </figure>
+      <details class="std-reveal">
+        <summary>What changed?</summary>
+        <p><strong>Composition &amp; perspective.</strong> A stronger angle makes the space feel clearer and more inviting.</p>
+      </details>
+    </section>
+
+    <section class="std-round">
+      <p class="std-round__label">2 of 5</p>
+      <figure class="ba-compare" data-ba-compare data-ba-start="50">
+        <div class="ba-frame">
+          <div class="ba-image ba-image--before">
+            <span class="ba-tag">Before</span>
+            <picture><source srcset="../images/before-4.webp" type="image/webp"><img src="../images/before-4.jpg" alt="Kitchen and hallway before: cluttered surfaces and personal items on display" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <div class="ba-image ba-image--after">
+            <span class="ba-tag">After</span>
+            <picture><source srcset="../images/after-4.webp" type="image/webp"><img src="../images/after-4.jpg" alt="Kitchen and hallway after: styled table setting and tidied surfaces" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <span class="ba-handle__icon">⟷</span>
+          </button>
+        </div>
+      </figure>
+      <details class="std-reveal">
+        <summary>What changed?</summary>
+        <p><strong>Styling &amp; presentation.</strong> Small details help guests imagine themselves in the space.</p>
+      </details>
+    </section>
+
+    <section class="std-round">
+      <p class="std-round__label">3 of 5</p>
+      <figure class="ba-compare" data-ba-compare data-ba-start="50">
+        <div class="ba-frame">
+          <div class="ba-image ba-image--before">
+            <span class="ba-tag">Before</span>
+            <picture><source srcset="../images/before-5.webp" type="image/webp"><img src="../images/before-5.jpg" alt="Hallway before editing: warm, uneven colour cast" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <div class="ba-image ba-image--after">
+            <span class="ba-tag">After</span>
+            <picture><source srcset="../images/after-5.webp" type="image/webp"><img src="../images/after-5.jpg" alt="Hallway after editing: balanced light and natural colour" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <span class="ba-handle__icon">⟷</span>
+          </button>
+        </div>
+      </figure>
+      <details class="std-reveal">
+        <summary>What changed?</summary>
+        <p><strong>Light, colour &amp; perspective.</strong> Balanced light and cleaner lines create a brighter, more accurate image.</p>
+      </details>
+    </section>
+
+    <section class="std-round">
+      <p class="std-round__label">4 of 5</p>
+      <figure class="ba-compare" data-ba-compare data-ba-start="50">
+        <div class="ba-frame">
+          <div class="ba-image ba-image--before">
+            <span class="ba-tag">Before</span>
+            <picture><source srcset="../images/before-6.webp" type="image/webp"><img src="../images/before-6.jpg" alt="Kitchen island before: a wide, level shot showing the full kitchen and dining area" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <div class="ba-image ba-image--after">
+            <span class="ba-tag">After</span>
+            <picture><source srcset="../images/after-6.webp" type="image/webp"><img src="../images/after-6.jpg" alt="Kitchen island after: a styled close-up with a fresh flower arrangement on the counter" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <span class="ba-handle__icon">⟷</span>
+          </button>
+        </div>
+      </figure>
+      <details class="std-reveal">
+        <summary>What changed?</summary>
+        <p><strong>Styling &amp; detail.</strong> A styled detail, like the flower arrangement, gives the space a point of interest the wide shot didn't have.</p>
+      </details>
+    </section>
+
+    <section class="std-round">
+      <p class="std-round__label">5 of 5</p>
+      <figure class="ba-compare" data-ba-compare data-ba-start="50">
+        <div class="ba-frame">
+          <div class="ba-image ba-image--before">
+            <span class="ba-tag">Before</span>
+            <picture><source srcset="../images/before-7.webp" type="image/webp"><img src="../images/before-7.jpg" alt="Bedroom before: a wide shot giving equal weight to empty floor space and the view outside" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <div class="ba-image ba-image--after">
+            <span class="ba-tag">After</span>
+            <picture><source srcset="../images/after-7.webp" type="image/webp"><img src="../images/after-7.jpg" alt="Bedroom after: a tighter composition centred on the bed and its layered textures" width="1200" height="900" loading="lazy" decoding="async"></picture>
+          </div>
+          <button type="button" class="ba-handle" aria-label="Drag to compare before and after" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <span class="ba-handle__icon">⟷</span>
+          </button>
+        </div>
+      </figure>
+      <details class="std-reveal">
+        <summary>What changed?</summary>
+        <p><strong>Composition &amp; framing.</strong> A tighter crop puts the bed and its layered textures at the centre, instead of empty floor and the view outside.</p>
+      </details>
+    </section>
+
+    <section class="std-twist">
+      <h2 class="section__title">Same property. Same furniture. Same room.<br>Different first impression.</h2>
+      <p>None of these are new photos of a different place. Every "after" is the same room, corrected rather than replaced — the kind of gap most listings have somewhere in the gallery without anyone noticing it. If you're not sure whether yours does too, that's exactly what the free guide below walks through.</p>
+    </section>
+
+    <section class="std-cta" id="playbook">
+      <h2 class="section__title">Get the free Host Playbook</h2>
+      <p>A short, practical guide to what to check in your own listing photos before you spend anything.</p>
+      <form id="std-form" class="std-form" novalidate>
+        <input type="text" id="std-name" name="name" placeholder="Your name (optional)" autocomplete="name">
+        <input type="email" id="std-email" name="email" placeholder="Your email" required autocomplete="email">
+        <button type="submit" class="btn btn--primary btn--sm" data-std-submit>Send me the Playbook</button>
+        <p class="std-form__confirmation" data-std-confirmation hidden role="status"></p>
+      </form>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__contact">First Look Photo · short-term rental photography</p>
+    <p class="site-footer__location">Marlborough, New Zealand · <a href="mailto:hello@firstlook-photo.com">hello@firstlook-photo.com</a></p>
+    <p class="site-footer__disclaimer">Not affiliated with Airbnb, Booking.com or Vrbo.</p>
+    <p class="site-footer__links"><a href="../privacy.html">Privacy</a></p>
+    <p class="site-footer__copy">&copy; 2026 First Look Photo</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+<script defer>
+  (function () {
+    "use strict";
+
+    /* Reuses the same /api/brevo-lead endpoint and payload contract
+       as js/main.js's syncToBrevo — kept as a small local copy here
+       instead of exposing that closure globally, so this page can't
+       accidentally affect the main site's form handlers. Same
+       fire-and-forget, one-retry pattern. */
+    function syncToBrevo(fields, attempt) {
+      attempt = attempt || 0;
+      fetch("/api/brevo-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fields)
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Brevo sync failed");
+        })
+        .catch(function (err) {
+          if (attempt < 1) {
+            setTimeout(function () { syncToBrevo(fields, attempt + 1); }, 1500);
+          } else {
+            console.error("Brevo lead sync failed after retry.", err);
+          }
+        });
+    }
+
+    function getUtm(param) {
+      return new URLSearchParams(window.location.search).get(param) || "";
+    }
+
+    var form = document.getElementById("std-form");
+    if (!form) return;
+
+    var emailInput = document.getElementById("std-email");
+    var nameInput = document.getElementById("std-name");
+    var submitBtn = form.querySelector("[data-std-submit]");
+    var confirmation = form.querySelector("[data-std-confirmation]");
+    var submitLabel = submitBtn.textContent;
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function showConfirmation(text, isError) {
+      confirmation.classList.toggle("std-form__confirmation--error", !!isError);
+      confirmation.textContent = text;
+      confirmation.hidden = false;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var email = emailInput.value.trim();
+      if (!isValidEmail(email)) {
+        showConfirmation("Enter a valid email address.", true);
+        emailInput.focus();
+        return;
+      }
+
+      var payload = {
+        email: email,
+        name: nameInput.value.trim(),
+        lead_source: "spot_the_difference_ad",
+        lead_intent: "playbook_download",
+        utm_source: getUtm("utm_source"),
+        utm_campaign: getUtm("utm_campaign"),
+        utm_content: getUtm("utm_content")
+      };
+
+      syncToBrevo(payload);
+
+      var formData = new FormData();
+      formData.append("name", payload.name);
+      formData.append("email", email);
+      formData.append("request_type", "Host Playbook waitlist (Spot the difference)");
+      formData.append("utm_source", payload.utm_source);
+      formData.append("utm_campaign", payload.utm_campaign);
+      formData.append("utm_content", payload.utm_content);
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      fetch("https://formspree.io/f/mojgopoa", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Form submission failed");
+          form.reset();
+          showConfirmation("Thanks. I'll email you the Host Playbook shortly.", false);
+        })
+        .catch(function () {
+          showConfirmation("Sorry, something went wrong. Please try again later.", true);
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitLabel;
+        });
+    });
+  })();
+</script>
+
+</body>
+</html>
